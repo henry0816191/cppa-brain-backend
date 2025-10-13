@@ -20,31 +20,31 @@ This endpoint accepts structured message data for processing through the RAG (Re
 
 ### Request Schema
 
-```typescript
+```python
 {
-  timestamp: String
-  requestId: String
-  type: String
-  data: {
-    messages: [
-      {
-        message_id: String,
-        subject?: String,
-        content: String,
-        thread_url: String,
-        parent?: String,
-        children?: Array<String>,
-        sender_address: String,
-        from: String,
-        date: String,
-        to?: String,
-        cc?: String,
-        reply_to?: String,
-        url: String
-      }
-    ],
-    message_count: Integer
-  }
+    "timestamp": str,
+    "requestId": str,
+    "type": str,
+    "data": {
+        "messages": [
+            {
+                "message_id": str,
+                "subject": Optional[str],
+                "content": str,
+                "thread_url": str,
+                "parent": Optional[str],
+                "children": Optional[List[str]],
+                "sender_address": str,
+                "from": str,
+                "date": str,
+                "to": Optional[str],
+                "cc": Optional[str],
+                "reply_to": Optional[str],
+                "url": str
+            }
+        ],
+        "message_count": int
+    }
 }
 ```
 
@@ -52,27 +52,27 @@ This endpoint accepts structured message data for processing through the RAG (Re
 
 ### Field Specifications
 
-| Field Name                       | Type      | Description                                                                                                                                    |
-| -------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **timestamp**                    | `String`  | Request timestamp in ISO 8601 format indicating when the request was created or sent to the RAG pipeline.                                      |
-| **requestId**                    | `String`  | Unique identifier for the data transmission request. Must include a source prefix (`slack@...` or `maillist@...`) to indicate the data origin. |
-| **type**                         | `String`  | Category or source type of the data being transmitted (e.g., "NEW EMAILS", "SLACK_MESSAGES").                                                  |
-| **data**                         | `Object`  | Primary payload container for message array and associated metadata.                                                                           |
-| ┗ **messages**                   | `Array`   | Collection of message objects containing detailed conversation information.                                                                    |
-| &nbsp;&nbsp;┗ **message_id**     | `String`  | Unique message identifier. For Slack messages, must include the `@@Slack@@` prefix.                                                            |
-| &nbsp;&nbsp;┗ **subject**        | `String?` | (Optional) Message subject or title, typically used for email communications.                                                                  |
-| &nbsp;&nbsp;┗ **content**        | `String`  | Primary message body used by the RAG pipeline for text retrieval and generation operations.                                                    |
-| &nbsp;&nbsp;┗ **thread_url**     | `String`  | URL reference to the conversation thread. For root messages, this value equals the `url` field.                                                |
-| &nbsp;&nbsp;┗ **parent**         | `String?` | (Optional) Message ID of the parent message in threaded conversations. Should be null or undefined for root messages.                          |
-| &nbsp;&nbsp;┗ **children**       | `Array`   | Collection of message IDs representing direct replies or child messages. Returns empty array if no replies exist.                              |
-| &nbsp;&nbsp;┗ **sender_address** | `String`  | Email address or unique identifier of the message sender.                                                                                      |
-| &nbsp;&nbsp;┗ **from**           | `String`  | Display name and identifier of the message sender (e.g., "John Doe &lt;john@example.com&gt;").                                                 |
-| &nbsp;&nbsp;┗ **date**           | `String`  | Message creation timestamp formatted as ISO 8601 string.                                                                                       |
-| &nbsp;&nbsp;┗ **to**             | `String?` | (Optional) Comma-separated list of primary recipients. Applicable for email or direct messaging.                                               |
-| &nbsp;&nbsp;┗ **cc**             | `String?` | (Optional) Comma-separated list of carbon copy recipients.                                                                                     |
-| &nbsp;&nbsp;┗ **reply_to**       | `String?` | (Optional) Reply-to address or message identifier for routing responses.                                                                       |
-| &nbsp;&nbsp;┗ **url**            | `String`  | Direct URL reference to the individual message. Must equal `thread_url` for root messages.                                                     |
-| ┗ **message_count**              | `Integer` | Total count of messages included in the current request payload.                                                                               |
+| Field Name             | Type            | Description                                                                                                                                    |
+| ---------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **timestamp**          | `str`           | Request timestamp in ISO 8601 format indicating when the request was created or sent to the RAG pipeline.                                      |
+| **requestId**          | `str`           | Unique identifier for the data transmission request. Must include a source prefix (`slack@...` or `maillist@...`) to indicate the data origin. |
+| **type**               | `str`           | Category or source type of the data being transmitted (e.g., "NEW EMAILS", "SLACK_MESSAGES").                                                  |
+| **data**               | `dict`          | Primary payload container for message array and associated metadata.                                                                           |
+| ┗ **messages**         | `List`          | Collection of message objects containing detailed conversation information.                                                                    |
+| ┃ ┗ **message_id**     | `str`           | Unique message identifier. For Slack messages, must include the `@@Slack@@` prefix.                                                            |
+| ┃ ┗ **subject**        | `Optional[str]` | (Optional) Message subject or title, typically used for email communications.                                                                  |
+| ┃ ┗ **content**        | `str`           | Primary message body used by the RAG pipeline for text retrieval and generation operations.                                                    |
+| ┃ ┗ **thread_url**     | `str`           | URL reference to the conversation thread. For root messages, this value equals the `url` field.                                                |
+| ┃ ┗ **parent**         | `Optional[str]` | (Optional) Message ID of the parent message in threaded conversations. Should be null or undefined for root messages.                          |
+| ┃ ┗ **children**       | `List[str]`     | Collection of message IDs representing direct replies or child messages. Returns empty array if no replies exist.                              |
+| ┃ ┗ **sender_address** | `str`           | Email address or unique identifier of the message sender.                                                                                      |
+| ┃ ┗ **from**           | `str`           | Display name and identifier of the message sender (e.g., "John Doe &lt;john@example.com&gt;").                                                 |
+| ┃ ┗ **date**           | `str`           | Message creation timestamp formatted as ISO 8601 string.                                                                                       |
+| ┃ ┗ **to**             | `Optional[str]` | (Optional) Comma-separated list of primary recipients. Applicable for email or direct messaging.                                               |
+| ┃ ┗ **cc**             | `Optional[str]` | (Optional) Comma-separated list of carbon copy recipients.                                                                                     |
+| ┃ ┗ **reply_to**       | `Optional[str]` | (Optional) Reply-to address or message identifier for routing responses.                                                                       |
+| ┃ ┗ **url**            | `str`           | Direct URL reference to the individual message. Must equal `thread_url` for root messages.                                                     |
+| ┗ **message_count**    | `int`           | Total count of messages included in the current request payload.                                                                               |
 
 ---
 
@@ -92,18 +92,18 @@ This endpoint allows updating existing message properties in the mail hierarchic
 
 ### Request Schema
 
-```typescript
+```python
 {
-  message_id: String,
-  subject?: String,
-  content?: String,
-  sender_address?: String,
-  from?: String,
-  date?: String,
-  to?: String,
-  cc?: String,
-  reply_to?: String,
-  url?: String
+    "message_id": str,
+    "subject": Optional[str],
+    "content": Optional[str],
+    "sender_address": Optional[str],
+    "from": Optional[str],
+    "date": Optional[str],
+    "to": Optional[str],
+    "cc": Optional[str],
+    "reply_to": Optional[str],
+    "url": Optional[str]
 }
 ```
 
@@ -111,18 +111,18 @@ This endpoint allows updating existing message properties in the mail hierarchic
 
 ### Field Specifications
 
-| Field Name         | Type      | Description                                                                  |
-| ------------------ | --------- | ---------------------------------------------------------------------------- |
-| **message_id**     | `String`  | Unique identifier of the message to update. This field is required.          |
-| **subject**        | `String?` | (Optional) Updated message subject or title.                                 |
-| **content**        | `String?` | (Optional) Updated message body content.                                     |
-| **sender_address** | `String?` | (Optional) Updated email address or unique identifier of the message sender. |
-| **from**           | `String?` | (Optional) Updated display name and identifier of the message sender.        |
-| **date**           | `String?` | (Optional) Updated message creation timestamp.                               |
-| **to**             | `String?` | (Optional) Updated comma-separated list of primary recipients.               |
-| **cc**             | `String?` | (Optional) Updated comma-separated list of carbon copy recipients.           |
-| **reply_to**       | `String?` | (Optional) Updated reply-to address or message identifier.                   |
-| **url**            | `String?` | (Optional) Updated direct URL reference to the message.                      |
+| Field Name         | Type            | Description                                                                  |
+| ------------------ | --------------- | ---------------------------------------------------------------------------- |
+| **message_id**     | `str`           | Unique identifier of the message to update. This field is required.          |
+| **subject**        | `Optional[str]` | (Optional) Updated message subject or title.                                 |
+| **content**        | `Optional[str]` | (Optional) Updated message body content.                                     |
+| **sender_address** | `Optional[str]` | (Optional) Updated email address or unique identifier of the message sender. |
+| **from**           | `Optional[str]` | (Optional) Updated display name and identifier of the message sender.        |
+| **date**           | `Optional[str]` | (Optional) Updated message creation timestamp.                               |
+| **to**             | `Optional[str]` | (Optional) Updated comma-separated list of primary recipients.               |
+| **cc**             | `Optional[str]` | (Optional) Updated comma-separated list of carbon copy recipients.           |
+| **reply_to**       | `Optional[str]` | (Optional) Updated reply-to address or message identifier.                   |
+| **url**            | `Optional[str]` | (Optional) Updated direct URL reference to the message.                      |
 
 ---
 
@@ -142,9 +142,9 @@ This endpoint removes a message from the mail hierarchical graph database. The d
 
 ### Request Schema
 
-```typescript
+```python
 {
-  message_id: String;
+    "message_id": str
 }
 ```
 
@@ -152,9 +152,9 @@ This endpoint removes a message from the mail hierarchical graph database. The d
 
 ### Field Specifications
 
-| Field Name     | Type     | Description                                                         |
-| -------------- | -------- | ------------------------------------------------------------------- |
-| **message_id** | `String` | Unique identifier of the message to delete. This field is required. |
+| Field Name     | Type  | Description                                                         |
+| -------------- | ----- | ------------------------------------------------------------------- |
+| **message_id** | `str` | Unique identifier of the message to delete. This field is required. |
 
 ---
 
