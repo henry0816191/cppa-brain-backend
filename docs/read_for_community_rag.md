@@ -73,16 +73,54 @@ rag_service/
 ├── s3_utils.py                  # S3 backup utilities
 ├── management/commands/
 │   └── generate_community_summary.py
-└── langchain_rag/
-    ├── rag_pipeline.py          # Main RAG pipeline
-    ├── task/
-    │   ├── community_task.py    # Summary generator
-    │   ├── mail_data_retriever.py
-    │   └── topic_extractor.py
-    ├── retrieve/                # Retrieval components
-    ├── preprocessor/            # Data preprocessing
-    └── llm/                     # LLM integration
+├── langchain_rag/
+│   ├── rag_pipeline.py          # Main RAG pipeline
+│   ├── task/
+│   │   ├── community_task.py    # Summary generator
+│   │   ├── mail_data_retriever.py
+│   │   └── topic_extractor.py
+│   ├── retrieve/                # Retrieval components
+│   ├── preprocessor/            # Data preprocessing
+│   └── llm/                     # LLM integration
+└── tests/
+    ├── test_models.py           # Model tests
+    ├── test_views.py            # View tests
+    ├── test_tasks.py            # Task tests
+    ├── test_commands.py         # Command tests
+    └── tests_rag_pipeline/      # RAG pipeline integration tests
+        ├── test_pipeline_basic.py      # Initialization & basic ops
+        ├── test_pipeline_operations.py # CRUD operations
+        ├── test_pipeline_errors.py     # Error handling
+        └── test_pipeline_validation.py # Data validation
 ```
+
+## Testing
+
+### Run All Tests
+
+```bash
+pytest rag_service/tests/
+```
+
+### Run Specific Test Modules
+
+```bash
+# RAG pipeline tests
+pytest rag_service/tests/tests_rag_pipeline/
+
+# Specific test file
+pytest rag_service/tests/tests_rag_pipeline/test_pipeline_basic.py
+
+# Specific test class
+pytest rag_service/tests/tests_rag_pipeline/test_pipeline_errors.py::TestRAGPipelineNetworkFailures
+```
+
+### Test Coverage
+
+- **Basic Tests** (`test_pipeline_basic.py`): Initialization, singleton pattern, basic operations
+- **Operations Tests** (`test_pipeline_operations.py`): CRUD operations, cache, statistics
+- **Error Tests** (`test_pipeline_errors.py`): Network failures, LLM errors, retriever errors
+- **Validation Tests** (`test_pipeline_validation.py`): Invalid data, edge cases, public methods
 
 ## How to Use
 
@@ -221,4 +259,4 @@ The RAG service:
 3. **Stores** summaries in PostgreSQL
 4. **Displays** on `/community/` page
 
-Runs automatically via Celery, or manually via management commands.
+Runs automatically via Celery, or manually via management commands. Comprehensive tests ensure reliability across all components.
