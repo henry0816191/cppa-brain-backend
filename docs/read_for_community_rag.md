@@ -1,18 +1,14 @@
 # RAG Service: Community Summary Guide
- 
+
 ## Overview
 
-The RAG service generates AI-powered summaries of Boost mailing list discussions and displays them on the `/community/` page. This document explains how it works.
+Generates AI-powered summaries of Boost mailing list discussions and displays them on `/community/`.
 
-## Quick Start
-
-**Generate a test summary:**
+**Quick Start:**
 ```bash
 python manage.py generate_community_summary --test
+# Visit http://localhost:8000/community/
 ```
-
-**View the summary:**
-Visit `http://localhost:8000/community/`
 
 ## Architecture
 
@@ -22,45 +18,23 @@ HyperKitty DB → ChromaDB → Summary Generation → PostgreSQL → Community P
 
 ## Data Flow
 
-### 1. Email Collection (Every 30 minutes)
-
-Emails are automatically synced from HyperKitty to ChromaDB:
-
+### 1. Email Collection (Every 30 min)
 - **Task:** `sync_new_mails_to_vector_db()` (Celery)
-- **Process:** Emails are embedded and stored for semantic search
+- Syncs emails from HyperKitty to ChromaDB for semantic search
 - **Location:** `rag_service/tasks.py`
 
 ### 2. Summary Generation (Daily at 1:00 AM)
+1. Get recent emails (last 7 days, ~100 emails)
+2. Extract topics (thread-based, clustering, or LLM)
+3. For each topic: retrieve past emails via RAG → generate summary via LLM
+4. Save as `CommunitySummary` to database
 
-The system generates weekly summaries:
-
-1. **Get recent emails** (last 7 days, ~200 emails)
-2. **Extract topics** using one of three methods:
-   - Thread-based (groups by conversation)
-   - Clustering (semantic similarity)
-   - LLM (direct extraction)
-3. **For each topic:**
-   - Retrieve relevant past emails using RAG
-   - Generate chronological summary using LLM
-4. **Save to database** as `CommunitySummary`
-
-**Components:**
-- `WeeklyCommunitySummaryGenerator` - Main orchestrator
-- `TopicExtractor` - Extracts topics
-- `MailDataRetriever` - Retrieves emails
-- `LLMHelper` - Generates summaries
-
+**Components:** `WeeklyCommunitySummaryGenerator`, `TopicExtractor`, `MailDataRetriever`, `LLMHelper`  
 **Location:** `rag_service/langchain_rag/task/community_task.py`
 
-### 3. Display on Community Page
-
-When a user visits `/community/`:
-
-1. `CommunitySummaryView` retrieves the active summary from database
-2. Data is prepared for the template
-3. `community.html` renders the summary
-
-**Location:** `rag_service/views.py` and `templates/community.html`
+### 3. Display
+`CommunitySummaryView` retrieves active summary → prepares data → renders in `community.html`  
+**Location:** `rag_service/views.py`, `templates/community.html`
 
 ## Project Structure
 
@@ -96,62 +70,34 @@ rag_service/
 
 ## Testing
 
-### Run All Tests
-
 ```bash
+# Run all tests
 pytest rag_service/tests/
-```
 
-### Run Specific Test Modules
-
-```bash
 # RAG pipeline tests
 pytest rag_service/tests/tests_rag_pipeline/
 
 # Specific test file
 pytest rag_service/tests/tests_rag_pipeline/test_pipeline_basic.py
-
-# Specific test class
-pytest rag_service/tests/tests_rag_pipeline/test_pipeline_errors.py::TestRAGPipelineNetworkFailures
 ```
 
-### Test Coverage
+## Usage
 
-- **Basic Tests** (`test_pipeline_basic.py`): Initialization, singleton pattern, basic operations
-- **Operations Tests** (`test_pipeline_operations.py`): CRUD operations, cache, statistics
-- **Error Tests** (`test_pipeline_errors.py`): Network failures, LLM errors, retriever errors
-- **Validation Tests** (`test_pipeline_validation.py`): Invalid data, edge cases, public methods
-
-## How to Use
-
-### Generate Test Summary
-
-Creates dummy data for UI testing:
-
+**Test Summary (dummy data):**
 ```bash
 python manage.py generate_community_summary --test --deactivate-existing
 ```
 
-### Generate Real Summary
-
-Requires:
-- ChromaDB with email data
-- LLM API keys configured
-
+**Real Summary (requires ChromaDB + LLM API keys):**
 ```bash
 python manage.py generate_community_summary --deactivate-existing
 ```
 
-### Automated Generation
-
-Summaries are generated automatically:
-- **Daily at 1:00 AM** via Celery task `update_summary_data()`
-- Configured in `config/celery.py`
+**Automated:** Daily at 1:00 AM via Celery task `update_summary_data()` (`config/celery.py`)
 
 ## Data Structure
 
-### Summary JSON Format
-
+**Summary JSON:**
 ```json
 {
   "summary_by_topic": [
@@ -200,63 +146,34 @@ CommunitySummary(
 
 ## Key Components
 
-### WeeklyCommunitySummaryGenerator
+**WeeklyCommunitySummaryGenerator** (`rag_service/langchain_rag/task/community_task.py`):
+- Main orchestrator for summary generation
+- Config: `source="chromadb"`, `limit=200`, `max_topics=5`, `fetch_k=30`, `topic_extraction_method="thread"|"clustering"|"llm"`
 
-**Location:** `rag_service/langchain_rag/task/community_task.py`
-
-Main orchestrator for generating summaries.
-
-**Configuration:**
-```python
-generator = WeeklyCommunitySummaryGenerator(
-    source="chromadb",
-    limit=200,                      # Max recent emails
-    max_topics=5,                   # Max topics
-    fetch_k=30,                     # Relevant emails per topic
-    topic_extraction_method="thread"  # "thread", "clustering", or "llm"
-)
-```
-
-### CommunitySummaryView
-
-**Location:** `rag_service/views.py`
-
-Django view that:
-- Retrieves active summary from database
-- Normalizes reference URLs
-- Assigns continuous reference numbers
-- Prepares data for template
+**CommunitySummaryView** (`rag_service/views.py`):
+- Retrieves active summary, normalizes URLs, assigns reference numbers
 
 ## Troubleshooting
 
-### No Summary Displayed
+**No Summary Displayed:**
+```bash
+# Check if summary exists
+python manage.py shell -c "from rag_service.models import CommunitySummary; print(CommunitySummary.objects.filter(need_review=False).count())"
 
-1. Check if summary exists:
-   ```bash
-   python manage.py shell -c \
-     "from rag_service.models import CommunitySummary; \
-      print(CommunitySummary.objects.filter(need_review=False).count())"
-   ```
+# Generate test summary
+python manage.py generate_community_summary --test
+```
 
-2. Generate test summary:
-   ```bash
-   python manage.py generate_community_summary --test
-   ```
-
-3. Check view: Ensure `CommunitySummaryView` retrieves summaries with `need_review=False`
-
-### Summary Generation Fails
-
-1. **ChromaDB:** Ensure emails are synced via `sync_new_mails_to_vector_db` task
-2. **LLM:** Verify API keys and model availability
-3. **Dependencies:** Check all RAG packages are installed
+**Generation Fails:**
+- ChromaDB: Ensure emails synced via `sync_new_mails_to_vector_db`
+- LLM: Verify API keys and model availability
+- Dependencies: Check RAG packages installed
 
 ## Summary
 
-The RAG service:
-1. **Collects** emails from HyperKitty → ChromaDB (every 30 min)
-2. **Generates** summaries from recent emails → topics → RAG → LLM (daily)
-3. **Stores** summaries in PostgreSQL
-4. **Displays** on `/community/` page
+1. **Collect** emails: HyperKitty → ChromaDB (every 30 min)
+2. **Generate** summaries: recent emails → topics → RAG → LLM (daily at 1 AM)
+3. **Store** in PostgreSQL
+4. **Display** on `/community/` page
 
-Runs automatically via Celery, or manually via management commands. Comprehensive tests ensure reliability across all components.
+Runs automatically via Celery or manually via management commands.
