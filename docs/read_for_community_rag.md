@@ -1,5 +1,5 @@
 # RAG Service: Community Summary Guide
-
+ 
 ## Overview
 
 The RAG service generates AI-powered summaries of Boost mailing list discussions and displays them on the `/community/` page. This document explains how it works.
