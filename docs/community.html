@@ -1,0 +1,3679 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:8000/community/ -->
+<html lang="en-us" class="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+      <script defer="" data-domain="boost.org" src="./community_files/script.manual.js.download"></script>
+   
+    <title> {%
+trans 'Community' %} </title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Boost C++ Libraries">
+    <link rel="shortcut icon" href="./community_files/Boost_Symbol_Transparent.svg" type="image/x-icon">
+
+    <meta class="meta-theme" name="theme-color" content="#FAFAFA" data-dark="#18181B" data-light="#FAFAFA">
+    <meta class="meta-theme" name="color-scheme" content="light" data-dark="dark" data-light="light">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="stylesheet" href="./community_files/css2">
+    <link rel="stylesheet" href="./community_files/all.min.css">
+    
+
+    <script src="./community_files/alpine-clipboard.js.download" defer=""></script>
+    <script src="./community_files/cdn.min.js.download" defer=""></script>
+    <script src="./community_files/alpinejs" defer=""></script>
+    <script src="./community_files/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+    <!-- TODO bring this local if we like it -->
+    <script src="./community_files/apexcharts"></script>
+    <script src="./community_files/theme_handling.js.download"></script>
+    <script src="./community_files/scroll-to-link.js.download" defer=""></script>
+    <script src="./community_files/utils.js.download"></script>
+    <script src="./community_files/main.C3hPHS6-.js.download" defer=""></script>
+    
+      <link href="./community_files/styles.css" rel="stylesheet">
+      <link href="./community_files/components.css" rel="stylesheet">
+      
+      <link href="./community_files/boostlook.css" rel="stylesheet">
+    
+
+    
+    <style>
+    
+    :root {
+    --site-light-bg-color: rgb(229, 231, 235);
+    --site-dark-bg-color: rgb(5, 26, 38);
+    --site-light-card-color: #fff;
+    --site-dark-card-color: rgb(23, 42, 52);
+    --site-light-border-color: #d1d1d1;
+    --site-dark-border-color: #07405f;
+    --site-light-text-color: rgb(49, 74, 87);
+    --site-dark-text-color: #ccc;
+    --site-dark-heading-text-color: #fff;
+    --site-light-heading-text-color: rgb(49, 74, 87);
+    --site-primary-orange: rgb(255, 159, 0);
+    --site-light-secondary-blue: rgb(2, 132, 199);
+    --site-dark-secondary-blue: rgb(125, 211, 252);
+    --site-light-teritary-green: rgb(14, 174, 96);
+    --site-dark-teritary-green: rgb(90, 213, 153);
+    --site-light-shadow-color: rgba(0,0,0,0.3);
+    --site-dark-shadow-color: transparent;
+    /* specific use colors */
+     /* header height var for docs positioning */
+    --header-height: 2.5rem;
+}
+html {
+    --bg-color: var(--site-light-bg-color);
+    --card-color: var(--site-light-card-color);
+    --border-color: var(--site-light-border-color);
+    --text-color: var(--site-light-text-color);
+    --header-color: var(--site-light-heading-text-color);
+    --primary-color: var(--site-primary-orange);
+    --secondary-color: var(--site-light-secondary-blue);
+    --teritary-color: var(--site-light-teritary-green);
+    --shadow-color: var(--site-light-shadow-color);
+    /* specific use colors */
+}
+html.dark {
+    --bg-color: var(--site-dark-bg-color);
+    --card-color: var(--site-dark-card-color);
+    --border-color: var(--site-dark-border-color);
+    --text-color: var(--site-dark-text-color);
+    --header-color: var(--site-dark-heading-text-color);
+    --primary-color: var(--site-primary-orange);
+    --secondary-color: var(--site-dark-secondary-blue);
+    --teritary-color: var(--site-dark-teritary-green);
+    --shadow-color: var(--site-dark-shadow-color);
+    /* specific use colors */
+}
+
+    .header-menu-bar {
+        padding: 0 1rem;
+        height: 41px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0px 1px 0px #d1d1d1;
+        border-bottom: 1px solid #f6f6f6;
+        max-width: 80rem;
+        margin: 0 auto;
+        color: var(--text-color);
+        font-family: "Noto Sans" !important;
+    }
+    .DEBUG .header-menu-bar {
+        font-family: "Noto Sans", serif !important;
+    }
+    .dark .header-menu-bar {
+        border-bottom: 1px solid #07405f;
+        box-shadow: 0 1px 0 #000;
+    }
+    .header-menu-bar .left-menubar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-grow: 1;
+    }
+    .header-menu-bar .right-menubar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        max-width: 9rem;
+    }
+    .header-menu-bar .logo-link {
+        width: 31px;
+        height: 31px;
+    }
+    .header-menu-bar .menu-link {
+        text-transform: capitalize;
+        text-decoration: none;
+        margin-left: 1rem;
+        font-weight: 500;
+        color: var(--text-color);
+        font-size: 18px;
+    }
+    .header-menu-bar .menu-link-right {
+        text-transform: capitalize;
+        margin-right: 1rem;
+        font-weight: 500;
+        color: var(--text-color);
+        font-size: 18px;
+        white-space: nowrap;
+    }
+    .icon-link {
+        display:block;
+        margin-left: 1rem;
+        cursor: pointer
+    }
+    .dark .icon-link {
+        opacity: 0.5;
+    }
+    .icon-link:hover,
+    .menu-link:hover,
+    .active-link,
+    .mobile-menu-item a:hover {
+        color: var(--primary-color) !important;
+        opacity: 1;
+    }
+    .boost-drop-shadow {
+      box-shadow: 2px 2px 5px 1px var(--shadow-color);
+    }
+    .guide-modal {
+        position: absolute;
+        right:0;
+        z-index: 10;
+        padding: .25rem .5rem;
+        margin-top: .5rem;
+        width: 10rem;
+        text-align:left;
+        background-color: var(--card-color);
+        border-radius: 0.375rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 3px 3px 7px 1px var(--shadow-color);
+    }
+    .guide-modal a {
+        margin-left: .5rem;
+        display: block;
+        padding: .5rem 0;
+        font-size: .8rem;
+        cursor: pointer;
+        color: var(--text-color);
+        border-bottom: var(--border-color) 1px solid;
+    }
+    .guide-modal a:last-child {
+        border-bottom: none;
+    }
+    .guide-modal a:hover {
+        color: var(--primary-color);
+    }
+    #pageselector {
+        text-transform: capitalize;
+        margin-left: 1rem;
+        font-weight: 500;
+        display:flex;
+        position: absolute;
+        top: 2.25rem;
+        left: 1.75rem;
+        flex-direction: column;
+        z-index: 10;
+        color: var(--text-color);
+        background-color: var(--card-color);
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+    .hide {
+        display: none !important;
+    }
+    .mobile-menu-item {
+          min-width: 10rem;
+          padding: .5rem 1rem;
+          border-bottom: var(--border-color) 1px solid;
+          text-transform: capitalize;
+        }
+    .mobile-menu-item:last-child {
+      border-bottom: none;
+    }
+    #avatar svg {
+        width: 1rem;
+        height: 1rem;
+        color: var(--text-color);
+        fill: var(--primary-color);
+    }
+    #mobileNav {
+        display: flex;
+        align-items: center;
+    }
+    #selectedpage {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 10px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    #pageName {
+      text-transform: capitalize;
+    }
+    #desktopNav {
+            display: none;
+        }
+    @media screen and (min-width: 768px) {
+        #mobileNav {
+            display: none;
+        }
+        #desktopNav {
+            display: flex;
+        }
+    }
+    /* specific to docs */
+    body.article {
+      max-width: 100% !important;
+      margin: 0;
+      padding: 0px .75rem !important;
+    }
+    body .body {
+      margin: 0px 1rem;
+      padding: 1.5rem 0rem 0;
+      max-width: 80rem;
+    }
+    body.article  #headblock {
+      padding: 0.25rem 1rem !important;
+    }
+    article.card {
+      border-radius: .5rem;
+      padding-top: .5rem !important;
+    }
+    @media (min-width: 769px) {
+      body.article {
+        max-width: 80rem !important;
+        margin: auto;
+        padding: 0px 2.25rem;
+        border-radius: .5rem;
+     }
+    }
+    @media (max-width: 768px) {
+      body.article {
+        padding: 0px !important;
+        border-radius: 0rem !important;
+        margin: 0 !important;
+     }
+    body.article  #headblock {
+      padding: 0.25rem 0.5rem !important;
+     }
+     .body {
+      margin: 0 !important;
+      padding: 0 !important;
+     }
+     .article .card {
+      border-radius: 0 !important;
+     }
+    }
+
+    /* asciidoc layout base */
+
+    .main-footer {
+      max-width: 80rem !important;
+    }
+
+    .link-icons {
+      width: 4rem;
+    }
+
+    .links {
+      padding: 0 0.5rem;
+    }
+
+    .source-docs-antora .doc {
+        padding-top: 0 !important;
+    }
+
+    @media screen and (max-width: 940px) {
+      .links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+
+    @media screen and (max-width: 769px) {
+
+      .source-docs-asciidoc #header  #toc.toc2 {
+         position: relative !important;
+         height: auto;
+      }
+
+        .main-footer {
+          margin-left: 0 !important;
+          margin: auto !important
+        }
+    }
+
+    .hidenav {
+      display: none !important;
+    }
+      .toast-text {
+        display: flex;
+        font-size: .9rem;
+        font-weight: 600;
+        align-items: center;
+        justify-content: center;
+      }
+      .red-delete {
+        display: inline;
+        padding: .1rem .5rem;
+        margin: 0 1rem;
+        border: 2px solid #fff;
+        border-radius: .3rem;
+        color: #fff;
+        font-size: .8rem;
+      }
+      .red-delete:hover {
+        background-color: #fff;
+        color: #f00;
+      }
+      .red-cancel {
+        display:inline;
+        padding: .1rem .5rem;
+        margin-left: 2rem;
+        border: 2px solid #fff;
+        border-radius: .3rem;
+        background-color: #fff;
+        color: var(--text-color);
+        font-size: .8rem;
+      }
+      .red-cancel:hover {
+        color: #f00;
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./community_files/css2(1)" rel="stylesheet">
+  <style>                      .htmx-indicator{opacity:0}                      .htmx-request .htmx-indicator{opacity:1; transition: opacity 200ms ease-in;}                      .htmx-request.htmx-indicator{opacity:1; transition: opacity 200ms ease-in;}                    </style><style data-emotion="css" data-s=""></style></head>
+
+  <body x-init="() =&gt; {const m = localStorage.getItem(&#39;colorMode&#39;);
+            if (m !== &#39;dark&#39; &amp;&amp; m !== &#39;light&#39;) return;
+            mode = m;
+            document.head.querySelectorAll(&#39;.meta-theme&#39;).forEach((el) =&gt; {
+              el.setAttribute(&#39;content&#39;, el.getAttribute(&#39;data-&#39; + m));
+            });
+        }" class="h-screen bg-gray-200 dark:bg-black DEBUG">
+         <div class="modal-overlay" id="modalOverlay"><div class="modal-content"><iframe id="modalFrame" class="w-full h-full rounded-xl m-0 p-0" src="./community_files/saved_resource.html"></iframe><div class="modal-close" id="modalClose" onclick="closeModal()"><i class="fa-solid fa-xmark fa-lg"></i></div></div></div>
+      <div class="max-w-7xl md:px-3 mx-auto transition-all">
+      
+        
+
+<div class="header-menu-bar topnavbar">
+    <!-- mobile navbar -->
+    <div id="mobileNav">
+      <a href="http://localhost:8000/" title="Boost Home" class="logo-link"><img src="./community_files/Boost_Symbol_Transparent.svg" alt="Boost"></a>
+      <div id="selectedpage" onclick="openNav()" class="">
+        <div id="pageName">Community</div>
+        <div class="material-symbols-outlined">arrow_drop_down</div>
+      </div>
+      <div id="pageselector" onmouseleave="closeNav()" class="hide boost-drop-shadow">
+          <div class="mobile-menu-item"><a href="http://localhost:8000/news/" title="News">News</a></div>
+          <div class="mobile-menu-item"><a href="http://localhost:8000/docs/" title="Learn">Learn</a></div>
+          <div class="mobile-menu-item"><a href="http://localhost:8000/community/" title="Community">Community</a></div>
+          <div class="mobile-menu-item"><a href="http://localhost:8000/libraries/" title="Libraries">Libraries</a></div>
+          <div class="mobile-menu-item"><a href="http://localhost:8000/releases/" title="Releases">Releases</a></div>
+      </div>
+    </div>
+    <!-- desktop navbar -->
+    <div id="desktopNav" class="left-menubar">
+        <a href="http://localhost:8000/" title="Boost Home" class="logo-link"><img src="./community_files/Boost_Symbol_Transparent.svg" alt="Boost"></a>
+        <a href="http://localhost:8000/news/" id="news" class="menu-link ">news</a>
+        <a href="http://localhost:8000/docs/" id="learn" class="menu-link ">learn</a>
+        <a href="http://localhost:8000/community/" id="community" class="menu-link active-link">community</a>
+        <a href="http://localhost:8000/libraries/" id="libraries" class="menu-link ">libraries</a>
+        <a href="http://localhost:8000/releases/" id="releases" class="menu-link ">releases</a>
+    </div>
+    <div class="right-menubar" x-data="{ &#39;searchOpen&#39;: false }">
+        <span style="position: relative;" x-ref="desktopSearchArea">
+         <i id="gecko-search-button" data-current-boost-version="" data-theme-mode="light" data-font-family="sans-serif" class="fas fa-search icon-link"></i>
+        </span>
+        <span x-data="{ &#39;guideOpen&#39;: false }" style="position:relative;">
+            <i class="icon-link fas fa-question-circle" @click="guideOpen = !guideOpen"></i>
+                <span x-show="guideOpen" @click.away="guideOpen = false" id="guideMenu" class="guide-modal boost-drop-shadow" style="display: none;">
+                    <a href="http://localhost:8000/doc/user-guide/index.html">User Guide</a>
+                    <a href="http://localhost:8000/doc/contributor-guide/index.html">Contributor Guide</a>
+                    <a href="http://localhost:8000/review/">Formal Reviews</a>
+                </span>
+            </span>
+        
+        <i id="light-dark" class="fas fa-sun icon-link " onclick="changeTheme()"></i>
+        
+        <span x-data="{ &#39;userOpen&#39;: false }" class="menu-link w-8 relative">
+            
+            <span hx-get="/users/avatar/" hx-trigger="load" hx-target="#avatar" hx-indicator="#avatar">
+            </span>
+            <span id="avatar" class=""><a href="http://localhost:8000/accounts/signup/" class="menu-link-right">
+    Join
+  </a>
+
+</span>
+        </span>
+    </div>
+</div>
+    <script>
+
+    if (window.parent !== window) {
+      var nav = document.getElementsByClassName('topnavbar');
+      console.log(nav);
+      nav[0].classList.add('hidenav');
+    }
+
+      // ************ Mobile Navigation **************
+      let containingElement = document.getElementById("pageselector");
+      document.body.addEventListener('click', function( event ){
+        if(!containingElement.contains( event.target ) ){
+          closeNav();
+        }
+      });
+      function openNav() {
+        ps = document.getElementById("pageselector");
+        ps.classList.remove('hide');
+      }
+      function closeNav() {
+         ps = document.getElementById("pageselector");
+        setTimeout(function() {
+          if (!ps.matches(':hover')) {
+            ps.classList.add('hide');
+          }
+        }, 2000);
+      }
+      function removejscssfile(filename, filetype){
+        var targetelement=(filetype=="js")? "script" : (filetype=="css")? "link" : "none" //determine element type to create nodelist from
+        var targetattr=(filetype=="js")? "src" : (filetype=="css")? "href" : "none" //determine corresponding attribute to test for
+        var allsuspects=document.getElementsByTagName(targetelement)
+          for (var i=allsuspects.length; i>=0; i--){ //search backwards within nodelist for matching elements to remove
+          if (allsuspects[i] && allsuspects[i].getAttribute(targetattr)!=null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1)
+              allsuspects[i].parentNode.removeChild(allsuspects[i]) //remove element by calling parentNode.removeChild()
+          }
+      }
+      document.onreadystatechange = () => {
+        if (document.readyState === 'complete') {
+          removejscssfile("boostbook.css", "css")
+          var guide = document.getElementById("guideMenu")
+          guide.classList.remove("hidden");
+        }
+      }
+    </script>
+
+      
+
+      <div class="w-full">
+        <div id="messages" class="w-full text-center transition-opacity opacity-0" x-data="{show: true}">
+  
+</div>
+
+      </div>
+      
+
+      <div class="md:px-0 min-vh-110">
+      
+        
+        
+<div class="py-0 px-0 md:py-6 md:px-3">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div class="p-6 bg-white md:rounded-lg md:shadow-lg dark:text-white text-slate dark:bg-charcoal dark:bg-neutral-700">
+      <h5 class="text-2xl leading-tight text-orange">Mailing List / Forum</h5>
+      <p class="py-1 my-2 border-b pb-4 border-gray-700 text-slate dark:text-white">
+        Discover the Boost library community with options tailored to
+        developers, casual users, and enthusiasts.
+      </p>
+      <div class="grid grid-cols-2">
+        <a href="https://lists.boost.org/mailman3/lists/boost.lists.boost.org/" class="px-2 py-3 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">
+          <h6 class="pb-1 text-sm md:text-base">Developers</h6>
+          <i class="fa fa-helmet-safety"></i>
+        </a>
+        <a href="https://lists.boost.org/archives/list/boost@lists.boost.org/latest" class="px-2 py-3 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">
+          <h6 class="pb-1 text-sm md:text-base">Archives</h6>
+          <i class="fa fa-clock"></i>
+        </a>
+
+        <a href="https://lists.boost.org/mailman3/lists/boost-users.lists.boost.org/" class="order-3 px-2 py-3 text-center rounded-lg cursor-pointer lg:order-2 lg:col-span-1 hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">
+          <h6 class="pb-1 text-sm md:text-base">Users</h6>
+          <i class="fa fa-user fa-lg"></i>
+        </a>
+
+        <a href="https://lists.boost.org/mailman3/lists/boost-announce.lists.boost.org/" class="order-2 px-2 py-3 text-center rounded-lg cursor-pointer lg:order-3 hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">
+          <h6 class="pb-1 text-sm md:text-base">Announcements</h6>
+          <i class="fa fa-bullhorn"></i>
+        </a>
+      </div>
+      <div>
+        <p class="text-center mx-auto pt-3">
+          Please, read our
+          <a href="http://localhost:8000/doc/user-guide/discussion-policy.html" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange whitespace-nowrap">Discussion
+            Policy</a>
+          before posting.
+        </p>
+      </div>
+    </div>
+
+    <div class="p-6 bg-white md:rounded-lg md:shadow-lg dark:text-white text-slate dark:bg-charcoal dark:bg-neutral-700">
+      <h5 class="text-2xl leading-tight text-orange">
+        The Official C++ Language Slack Workspace
+      </h5>
+
+      <p class="py-1 my-2 border-b pb-4 border-gray-700">
+        A vibrant hub for real-time discussions with Boost authors, maintainers,
+        and contributors. Dive into one of the largest searchable databases for
+        Boost/C++ insights and history. Join now.
+      </p>
+
+      <div class="flex flex-col">
+        <a href="https://cppalliance.org/slack/" class="flex p-3 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">Join
+          Cpplang Slack</a>
+        <a href="https://cpplang.slack.com/" class="flex p-3 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">Visit
+          the Workspace</a>
+      </div>
+    </div>
+
+    
+
+    <div class="p-6 text-white bg-white md:rounded-lg md:shadow-lg dark:text-white text-slate dark:bg-charcoal dark:bg-neutral-700">
+      <h5 class="text-2xl leading-tight text-orange">ISO C++</h5>
+      <p class="py-1 my-2 border-b pb-4 border-gray-700 text-slate dark:text-white">
+        News, Status &amp; Discussion about Standard C++
+      </p>
+      <p class="pt-3 text-slate dark:text-white">
+        <a href="https://isocpp.org/" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange whitespace-nowrap">The Standard
+          C++ Foundation</a>
+        is a Washington 501(c)(6) not-for-profit organization supporting the C++
+        community and promotes the use of modern Standard C++.
+      </p>
+    </div>
+
+    <div class="p-6 text-white bg-white md:rounded-lg md:shadow-lg dark:text-white text-slate dark:bg-charcoal dark:bg-neutral-700">
+      <h5 class="text-2xl leading-tight text-orange">Across the Web</h5>
+      <p class="py-1 my-2 border-b pb-4 border-gray-700 text-slate dark:text-white">
+        Follow us, like, and share our announcements.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-3 justify-items-center w-fit mx-auto">
+        <a href="https://github.com/boostorg" target="_blank" title="GitHub" class="block p-3 w-28 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange"><span class="text-xs">On GitHub</span> <br><i class="fa-brands fa-github fa-3x"></i></a>
+        <a href="https://x.com/boost_libraries" target="_blank" title="X (Twitter)" class="block p-3 w-28 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange"><span class="text-xs">On X (Twitter)</span> <br><i class="fa-brands fa-x-twitter fa-3x"></i></a>
+        <a href="https://bsky.app/profile/boost.org" target="_blank" title="Bluesky" class="block p-3 w-28 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange"><span class="text-xs">On Bluesky</span> <br><i class="fa-brands fa-bluesky fa-3x"></i></a>
+        <a href="https://mastodon.social/@boostlibs" target="_blank" title="Mastodon" class="block p-3 w-28 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange"><span class="text-xs">On Mastodon</span> <br><i class="fa-brands fa-mastodon fa-3x"></i></a>
+        <a href="https://www.reddit.com/user/boostlibs/" target="_blank" title="Reddit" class="block p-3 w-28 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange"><span class="text-xs">On Reddit</span> <br><i class="fa-brands fa-reddit fa-3x"></i></a>
+        <a href="https://www.linkedin.com/company/boostlibs/" target="_blank" title="Reddit" class="block p-3 w-28 text-center rounded-lg cursor-pointer hover:bg-gray-100 group dark:hover:bg-slate text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange"><span class="text-xs">On LinkedIn</span> <br><i class="fa-brands fa-linkedin fa-3x"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-6 p-6 bg-white md:rounded-lg md:shadow-lg dark:text-white text-slate dark:bg-charcoal dark:bg-neutral-700">
+    <h5 class="text-2xl leading-tight text-orange">
+      Recent Community Summary
+    </h5>
+    <p class="py-1 my-2 border-b pb-4 border-gray-700 text-slate dark:text-white text-sm">
+      
+      Sep 20 - Nov 15, 2025
+      
+      
+      • 5 topics
+      
+      
+      • 88 recent emails
+      
+    </p>
+    
+    <div class="space-y-4">
+       
+      <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
+        <h6 class="text-lg font-semibold text-orange mb-3">
+          Discussion on the potential inclusion of a null-terminated string view type in Boost, its design considerations, and comparison with existing and proposed solutions.
+        </h6>
+
+        
+        <details class="mb-3">
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Key Points (7)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <ul class="list-disc list-inside space-y-2 ml-2 mt-2">
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The primary motivation for a null-terminator guaranteed string view type is to avoid common pitfalls of `std::string_view`, where `data()` is not guaranteed to be null-terminated and `size()` does not account for it. Such a type would simplify interactions with C APIs and prevent unnecessary conversions to `std::string`.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/RDKNHXTXDTJWQRTXDTJWQRG5VFWAEVMWP63VOLO7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [1]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7UCVWDBOOEJR3I6TXWFFWFWS6ISTT5RX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [2]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              Several existing and proposed solutions for a null-terminated string view were discussed, including Chromium's `cstring_view.h`, C++ standardization proposals (e.g., P3655), and Rust's `CStr`. Comparing these implementations and their divergences is considered important.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/RDKNHXTXDTJWQRG5VFWAEVMWP63VOLO7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [3]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/ULGXZ7NCYBAVJ7UXPMJREUB3CRDYNRFG/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [4]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7UCVWDBOOEJR3I6TXWFFWFWS6ISTT5RX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [2]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              There's a debate on the extent of functionality a null-terminated string view should offer. Some argue it should primarily provide C-string like operations (`data`, `operator[]`, `length`/`strlen`) without the full `std::string` interface to avoid over-engineering, while others suggest aligning it with `std::string_view`'s interface for consistency, which implies methods like `end()` and `substr`.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NLP2CXWHRA4Y5SKLEDF6AMWR6EZZR7VX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [5]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/BX67F6ONAVOHP62PNXYSNEMNVKCKWLGP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [6]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/UIJ4GLOKDQ3OK65G7FS7MELJ6B2XIAEA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [7]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              Key desired features for a new type include distinguishing between a null-terminated sequence and a raw `char*` pointer, providing shorter syntax than `.c_str()` for `std::string` objects, and ensuring `operator==` compares content rather than addresses. Runtime invariant checking is also seen as a benefit.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NLP2CXWHRA4Y5SKLEDF6AMWR6EZZR7VX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [5]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The performance impact of `strlen` for calculating length is debated. While some note that compilers can optimize away `strlen` calls for inlined static strings, others emphasize that `strlen` is performant for typical string lengths and essential for operations beyond just size.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NLP2CXWHRA4Y5SKLEDF6AMWR6EZZR7VX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [5]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7UCVWDBOOEJR3I6TXWFFWFWS6ISTT5RX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [2]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/BX67F6ONAVOHP62PNXYSNEMNVKCKWLGP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [6]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The fundamental incompatibility between `std::string_view`'s substring guarantee (no memory management) and a null-terminator guarantee is acknowledged. The idea of using a null-terminator-detecting sentinel for range iteration is mentioned but noted as deviating from a contiguous range.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NLP2CXWHRA4Y5SKLEDF6AMWR6EZZR7VX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [5]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The discussion touches on the evolution of `std::string_view`'s interface in C++23, which accepts contiguous sized ranges, and how this differs from earlier versions that relied solely on `data()` and `size()`. A proposed `string_like` concept aims to extend compatibility for `cstring_view` similarly.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7UCVWDBOOEJR3I6TXWFFWFWS6ISTT5RX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [2]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/UIJ4GLOKDQ3OK65G7FS7MELJ6B2XIAEA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [7]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/UIJ4GLOKDQ3OK65G7FS7MELJ6B2XIAEA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [7]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+          </ul>
+        </details>
+        
+
+        
+        <details>
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Timeline (18 entries)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <div class="space-y-3 mt-2">
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2011-01-25:</span>
+              <span class="ml-1">The discussion began with a user seeking a generic way to view various string types (std::string, QString, CString, etc.) without creating a new 'boost::string' concept. The focus was on practical, working code for string views rather than abstract string types.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/E6JKT2IF3CFIMLDCQPYI5F7VZHPYVTZ5/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [8]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2011-01-26:</span>
+              <span class="ml-1">A design was proposed for string views that would wrap an underlying immutable string type and apply encoding semantically. This 'view&lt;Encoding&gt;' concept aimed to provide a consistent interface for dealing with different encodings, similar to how 'boost::string' was envisioned.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/R7XAHPTEUMNUHQ6T3EV6TK7GDC3/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [9]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2011-03-24:</span>
+              <span class="ml-1">The discussion touched upon a 'specialized_string_t' template that provides a generic interface for accessing underlying string data. This pattern was noted to be similar to the 'view&lt;Encoding&gt;' concept, suggesting a generalized approach to wrapping different string types with encoding semantics.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.boost.org/archives/list/boost@lists.boost.org/message/W7MKCO4OHQDYBBRHIHRH5NS6M74R26G4/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [10]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2013-12-24:</span>
+              <span class="ml-1">A discussion arose regarding 'boost::string_ref' and its conformance to standard proposals (N3442, N3762). A key point was that Boost.string_ref's default constructor returned a null pointer from data(), contradicting the standard's requirement for a non-null pointer.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/UBWM5NFGVUAV5XUYXFQMI663JLYI67LO/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [11]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2015-07-05:</span>
+              <span class="ml-1">The existence of 'boost::string_ref' (since 1.53) was noted, alongside the C++ committee's 'string_view' in the Library Fundamentals TS. A proposal was made to add the TS's 'basic_string_view' to Boost, preferring it over renaming existing uses of 'string_ref' due to its closer mimicry of std::basic_string.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/IAA5DXALWEWVTIENBEM5YVIGKQZIOE2M/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [12]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2017-11-27:</span>
+              <span class="ml-1">A brief mention of existing proposals for string view types, such as Edward Diener's cxx_dual and Niall Douglas' BindLib, arose in the context of code agnosticism to string view types, though these were noted as not being part of Boost.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NBT6PJEXVYHY7WBK4D3ZYRUB5UTGJC5X/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [13]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2018-07-08:</span>
+              <span class="ml-1">A user highlighted a potential pitfall with 'boost::string_view' (likely referring to 'string_ref' in context): using data() without size()/length() can lead to bugs if the string is not null-terminated, as was the case with an HTTP field in Boost.Beast.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost-users@lists.boost.org/message/DPOZHW3RM4V27X5FJJRICG2MUJXC6YRZ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [14]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2021-10-16:</span>
+              <span class="ml-1">A new implementation, 'boost::core::string_view', was introduced in Boost.Core, differing from 'boost::string_view' in Boost.Utility and std::string_view by not accepting char_traits for simplification. Concerns were raised about having a third Boost string_view type and its lack of drop-in compatibility.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/OAIRKPHZZVOTQDBT2HSY4P4PWQQP5V6M/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [15]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2021-10-16:</span>
+              <span class="ml-1">The introduction of 'boost::core::string_view' was questioned for complicating code by requiring extra overloads and specializations. The discussion emphasized the need for a single, common string_view type, whether std::string_view or a unified boost::string_view.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/OAIRKPHZZVOTQDBT2HSY4P4PWQQP5V6M/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [15]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2021-10-17:</span>
+              <span class="ml-1">Participants argued that adding a duplicate string_view type with different behavior is detrimental. Suggestions included deprecating the Boost.Utility version or reopening the discussion to add conversions to the existing 'boost::string_view' to match std::string_view.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/KFQTEKFECYXCFL56AZXHMKON6VR5BO2V/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [16]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2021-10-18:</span>
+              <span class="ml-1">A proposal was made to remove 'boost::core::string_view' unless strong objections were raised. The alternative of adding conversions to 'boost::string_view' was favored over unilaterally adding a conflicting type without review.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/XPFB32UZPCX2I7UG6DDY5BRC2OCGRS7T/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [17]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2021-10-18:</span>
+              <span class="ml-1">An alternative suggestion was to create a 'boost::any_string_view' in Boost.Core, which would focus on conversion duck-typing to other string_view types rather than being a direct clone, aiming for a less intrusive integration.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/5JFMR5IIKTHKQNL6YNDSPBZSGR34I5BC/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [18]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2021-10-20:</span>
+              <span class="ml-1">The discussion revolved around demonstrating the necessity and feasibility of an interoperable 'boost::string_view' through practical use. The goal was to reach consensus on whether to update the existing 'boost::string_view' or promote the 'boost::core::string_view'.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TEG4DQU27G6NSJW4JUCVTLN4BM3H5UBV/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [19]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-02-08:</span>
+              <span class="ml-1">Concerns were raised about 'boost::core::string_view' not supporting char_traits, making it incompatible with std::string_view. The debate continued on whether to document a concept of string views or list supported types, given the existence of multiple Boost string view implementations.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/AK24TV4WCFBPKWOCRJ6ZCE4MOC2D7RWP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [20]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3PLFQABGNJXIL5S2743JMC426UPIWAVK/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [21]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-24:</span>
+              <span class="ml-1">A new discussion initiated the question of whether Boost libraries would benefit from a string_view-like type guaranteed to be null-terminated. This need arises when interfacing with C-libraries or handling string data that requires a null terminator, and a standardization proposal (p3655) was mentioned.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/E3D7ZHSIIEZ6KP6XLOE7Y57Z7VQ4TSUD/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [22]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-24:</span>
+              <span class="ml-1">It was clarified that a zero-terminated string view, similar to std::string_view, would hold both a pointer and a size, allowing constant-time size retrieval. The invariant would be that the null terminator's position is consistent with the stored size.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/POD53FHQ7KKDBKXMSNVTQP6MAGOQZ32H/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [23]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-25:</span>
+              <span class="ml-1">The usefulness of null-terminated string views was reinforced, especially for Boost.SQLite wrappers. It was suggested that two 'zstring_view' classes might be beneficial: one enforcing no embedded nulls and another that does not, catering to different use cases.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/LINUDPSNWSDMSYO5U55FM5BYRI4OVKKU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [24]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-26:</span>
+              <span class="ml-1">Participants agreed that a null-terminated string view type is highly important for avoiding common pitfalls with standard string_view, such as the lack of guaranteed null termination. Such a type would simplify conversions to C-style APIs and provide a safer alternative to raw const char*.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7UCVWDBOOEJR3I6TXWFFWFWS6ISTT5RX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [2]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+          </div>
+        </details>
+        
+      </div>
+        
+      <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
+        <h6 class="text-lg font-semibold text-orange mb-3">
+          Discussions on streamlining Boost release archives by removing the unified documentation build and splitting into source-only and full archives.
+        </h6>
+
+        
+        <details class="mb-3">
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Key Points (5)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <ul class="list-disc list-inside space-y-2 ml-2 mt-2">
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The primary goal is to streamline the Boost release package and website. Two main ideas are proposed: removing the unified documentation build and splitting the release into separate source and documentation archives. The unified documentation build has a non-standard layout that complicates tooling, while separate archives would offer faster downloads for users who don't need local documentation.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXMFMNKHATVIYQJCFHE7DBQBUBOLLHYF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [25]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/EEEWY7YGUFZX36IQFG3IIJJKRWDH3OEE/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [26]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/JWCXDM2S6FVDTD6PN63Y3MQQVT4HN5BK/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [27]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7XRVY7BHWPCIXYDCUPPIVUY5ZPXGKYBC/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [28]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/GXCKPHJTLG4TIHITTAMVLE6Y7S2A53KR/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [29]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NNOM2CY2LMOC2VV3DRUIXUYL5MMEA7KJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [30]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              Removing the unified documentation build involves moving documentation into individual library directories by editing Jamfiles. This task requires effort from each library maintainer and is considered a worthwhile improvement for consistency and modularity. However, the actual effort for the root /doc/ tree build is minimal, primarily involving updates to the top-level redirect HTML file.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/LA6DLVAU2HPB7OV35HW2EUPZYX2BPIC6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [31]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/EEEWY7YGUFZX36IQFG3IIJJKRWDH3OEE/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [26]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TFFFOF5YFED4JDMAVDSPOKMH5R2OSJL2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [32]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              Regarding the split archives, the 'full' archive would remain the primary URL for backwards compatibility, while an alternative 'source-only' archive would be offered for faster downloads. The contents of these archives, particularly whether to include library-specific HTML documentation files in source archives, are open for discussion.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXMFMNKHATVIYQJCFHE7DBQBUBOLLHYF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [25]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/EEEWY7YGUFZX36IQFG3IIJJKRWDH3OEE/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [26]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NNOM2CY2LMOC2VV3DRUIXUYL5MMEA7KJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [30]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/I4ZJJLU5DLIMY7BTLDVZTA6GVL43VQQ6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [33]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              Unofficial source-only release archives (e.g., 'b2-nodocs') have been available on GitHub releases, prepared by a CI job. These archives are roughly half the size of their 'cmake' counterparts because the 'doc/' subdirectories are deleted. The need for separate b2 vs. cmake archives in these unofficial releases was questioned.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/JWCXDM2S6FVDTD6PN63Y3MQQVT4HN5BK/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [27]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7XRVY7BHWPCIXYDCUPPIVUY5ZPXGKYBC/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [28]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/GXCKPHJTLG4TIHITTAMVLE6Y7S2A53KR/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [29]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/I4ZJJLU5DLIMY7BTLDVZTA6GVL43VQQ6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [33]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/I4ZJJLU5DLIMY7BTLDVZTA6GVL43VQQ6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [33]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The decision to proceed with streamlining is acknowledged as being 'on the radar' but also subject to other ongoing tasks. The use of GitHub releases as an alternative to the main website download links was also suggested.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/EEEWY7YGUFZX36IQFG3IIJJKRWDH3OEE/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [26]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/4/http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXMFMNKHATVIYQJCFHE7DBQBUBOLLHYF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [34]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+          </ul>
+        </details>
+        
+
+        
+        <details>
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Timeline (19 entries)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <div class="space-y-3 mt-2">
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2007-06-03:</span>
+              <span class="ml-1">The discussion began with a suggestion to include release numbers in library header files to help end-users identify specific versions of individual Boost libraries when released separately from the main Boost set. This was met with a note that such versioning could be tricky if individual files within a subset release didn't perfectly align with a full release version.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3JHCUR5HUGGRMBSECH6SBKKF7ST3M47I/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [35]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2008-08-18:</span>
+              <span class="ml-1">A participant suggested generating documentation on Linux and offering it as a separate download, or providing multiple package types (documentation-only, source/header-only, combined). This was proposed as a workaround for difficulties in building documentation on Windows, and to simplify the release process by potentially detecting documentation build failures earlier.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/HMLAZ5IZONZC63J3WWS54UQS5LIOAUV7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [36]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2008-11-04:</span>
+              <span class="ml-1">A user expressed frustration with the inconsistent location of documentation within the release archives, noting that some documentation was in '../doc/html' and others in 'libs/&lt;library_name&gt;/doc'. The user proposed a more rationalized directory structure and the ability to build documentation for individual libraries to make it more convenient for users working with only a subset of Boost.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/QQPSSPISWCTCFCAH3X4P653IXY65RWW7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [37]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2009-01-23:</span>
+              <span class="ml-1">A discussion about distributing library updates raised the point of packaging. A user noted that archives generated from individual changesets (like those linked from Trac) were not comparable to a full Boost release package, which includes documentation in multiple formats and is thoroughly tested.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/ZDP62GNLDT57SEYUUMN2EE6O34Y4S2IK/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [38]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2011-03-22:</span>
+              <span class="ml-1">A multi-step plan was proposed to improve documentation handling, including attracting technical writers, relocating documentation to standard install directories, treating documentation build failures as bugs, and moving towards uniform style guidelines. The ultimate goal was to enable automatic creation of a PDF book of Boost Libraries.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.boost.org/archives/list/boost@lists.boost.org/message/SJPYPEPTHUBU74UZXAKL3DKE4SEUMEQP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [39]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2011-06-20:</span>
+              <span class="ml-1">A user expressed dissatisfaction with the Boost documentation not being in sync with the release code, as it was built separately. They suggested fixing bjam scripts for a consistent directory structure (libs/&lt;library_name&gt;/doc/html) and daily incremental rebuilds of documentation to keep it up-to-date with the code.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/Y4EH2LJ7RLYM57MUJVCPGJVVGUJQSSAQ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [40]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/D3UKMLC62G2KLULXKC35X7CZ2GQVPJJZ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [41]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2011-07-17:</span>
+              <span class="ml-1">The idea of providing separate archives for Boost source code and generated documentation (e.g., boost-1.47.0.tar.gz and boost-docs-1.47.0.tar.gz) was revisited. This was suggested as a way to manage the release and potentially cater to different user needs, with the implication that users could combine them if needed.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/GONZPOJ45GST5P5SJU7YYOS33OJJXQSO/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [42]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2013-12-29:</span>
+              <span class="ml-1">A user inquired about centralizing and installing documentation, as they had to find third-party distributions for it. It was explained that building documentation separately from the main Boost tree is difficult because much of the documentation links to files within the Boost tree itself.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/ZR4Y4QBVFVB2ZLSQTHMR7NXKGF47ANQ6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [43]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2015-01-06:</span>
+              <span class="ml-1">The complexity of potential new release packaging models was discussed. The idea of a 'packaged-boost' top-level super-project was considered too complex, with a preference for a simpler approach where users could checkout the source tree and run a packaging script to create modular releases.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2RS6VOGESEOIXJV5P3ZIKBYAJSOEKT63/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [44]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2016-01-10:</span>
+              <span class="ml-1">A proposal was made to have a separate branch for documentation that is kept up-to-date with the main branch. This would allow users to browse documentation directly from the repository without building, benefiting new users. The extra space used was considered a small price for this benefit.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/MW4BS7FYWA6VWPWXGDYTPIDYTFTRALVI/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [45]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2016-03-04:</span>
+              <span class="ml-1">The implementation of building release archives in Travis-CI was announced, with archives being uploaded to bintray.com. Users were asked to test these new archives and provide feedback on any missing or incorrect elements, as part of an effort to make release management less painful.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/VITURRTC64AHKE7ZPPDC62W65GTBUNC6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [46]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/MF7Y2CD5XXHZ5ETFZPSGIKJFXMD5FXF3/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [47]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2019-08-09:</span>
+              <span class="ml-1">A discussion about a documentation change in a Pull Request (PR #90) for Boost.Parameter revealed that it temporarily removed all documentation sources. Concerns were raised about this approach, questioning why documentation was removed rather than disabled and emphasizing the need for fixed or existing documentation to be present before a release.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/ZLHKWXQJETZNL647T6DJOCGWGLXVWXLH/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [48]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-01-07:</span>
+              <span class="ml-1">A question was posed about the possibility of distributing Boost as two separate archives: one containing complete HTML documentation and another containing only the source code. This was explored as a potential way to manage distribution size, especially in the context of evolving hosting platforms.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TX62TBK4DFEWHQFMBK6OQ7GEHA2PDGRS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [49]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-01-10:</span>
+              <span class="ml-1">A strong argument was made against splitting Boost into separate archives for individual libraries, emphasizing the combinatorial explosion of version compatibility issues. The current model of a single, unified release was defended as essential for managing dependencies and ensuring that all libraries are tested together as a unit.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/526645EDMLKCYPZBW4VFOXCPKO3ZYPWX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [50]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-05-24:</span>
+              <span class="ml-1">A new contributor found it strange that documentation was included in the same release tarball as the code, given common complaints about Boost's size. They expressed a desire to understand the reasons behind this practice.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/FWGTG2SH6SOYU5U6677P4WDRVWPHBX5V/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [51]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/XMJAUEKSGSELY6B7JCXQK7DO372KV3CS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [52]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-06-06:</span>
+              <span class="ml-1">The possibility of splitting the Boost release into two archives, one for documentation and one for everything else, was discussed. This would maintain the convenience of an all-in-one archive if unpacked into the same directory, while offering a separate documentation archive.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/Y5YDB2RRXV2UEJSBK2XZH5446LHIOOYL/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [53]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-06-07:</span>
+              <span class="ml-1">A proposal emerged to publish three variants of the release archives: a full version, a source-only version (including tests and examples but not docs), and a minimal version (library sources only). This aims to cater to various user needs while maintaining backward compatibility.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/YO6XPE2ZHRREXMYSEQ6GDS3GZE6GF6OC/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [54]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/QI3C5N4WFKMBY7WZ7P2MZT7RTV6C6542/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [55]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/KYUZPWZ6X2O6VODAYV7TO6TID47YOEKF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [56]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-29:</span>
+              <span class="ml-1">A renewed discussion focused on streamlining the Boost website and release package. Two core ideas were proposed: removing the unified documentation build and splitting the release into separate source and documentation archives. The unified build's inconsistent layout was cited as a reason for its removal.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXMFMNKHATVIYQJCFHE7DBQBUBOLLHYF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [25]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7XRVY7BHWPCIXYDCUPPIVUY5ZPXGKYBC/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [28]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/EEEWY7YGUFZX36IQFG3IIJJKRWDH3OEE/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [26]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/JWCXDM2S6FVDTD6PN63Y3MQQVT4HN5BK/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [27]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TFFFOF5YFED4JDMAVDSPOKMH5R2OSJL2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [32]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/GXCKPHJTLG4TIHITTAMVLE6Y7S2A53KR/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [29]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-30:</span>
+              <span class="ml-1">Following the proposal to split archives, a question arose about whether individual library HTML documentation files (like those in Serialization) should be removed from the source-only archives. It was noted that unofficial source-sans-docs archives are already being provided via GitHub releases.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NNOM2CY2LMOC2VV3DRUIXUYL5MMEA7KJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [30]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/I4ZJJLU5DLIMY7BTLDVZTA6GVL43VQQ6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [33]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+          </div>
+        </details>
+        
+      </div>
+        
+      <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
+        <h6 class="text-lg font-semibold text-orange mb-3">
+          Discussion on potential graduation projects for senior students involving Boost libraries, including a proposal for concurrent set/map implementations.
+        </h6>
+
+        
+        <details class="mb-3">
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Key Points (5)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <ul class="list-disc list-inside space-y-2 ml-2 mt-2">
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The initial inquiry was about identifying Boost-related projects suitable for senior students' graduation work. This led to a suggestion for students to work on implementing concurrent set, multiset, map, and multimap structures based on red-black trees enhanced with positional access.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLXP6K5I4A32CVXQCYA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [57]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The proposed concurrent data structures offer O(log N) time complexity for insertions and deletions, even for non-extremal elements, differentiating them from concurrent vectors. They aim for 100% STL compatibility and utilize a spinlock for managing concurrent reads and writes.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The project for students is divided into two levels: a simpler task involving replacing the current mutex with a modern one and designing parallel algorithms for tree destruction and copying, and a more complex level that includes improving the balancing algorithms.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The proposer believes these concurrent container implementations could be of interest to major C++ compiler vendors as they may not currently offer such algorithms. The existing code is available on GitHub, and the proposer is willing to provide optimized spinlock code.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              There was a consensus that mentors should create a database of tasks, categorized by required knowledge levels, to effectively match students with suitable projects. Using GitHub with specific labels for Boost libraries was suggested as a platform for this database.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+          </ul>
+        </details>
+        
+
+        
+        <details>
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Timeline (22 entries)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <div class="space-y-3 mt-2">
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2010-03-08:</span>
+              <span class="ml-1">Initial discussions about potential Google Summer of Code (SoC) project ideas for Boost. Suggestions included extending existing libraries, infrastructure projects (like improving regression testing or build systems), and applications of Boost. The importance of manageable project scope and student follow-through was emphasized.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/37JYQDKLKQMAONXZFQICZIDSEB3KXASP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [59]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/37JYQDKLKQMAONXZFQICZIDSEB3KXASP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [59]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2010-03-09:</span>
+              <span class="ml-1">Further ideas for infrastructure projects were proposed, including integrating Boost regression tests with systems like Buildbot or Hudson, and creating a 'Cookbook'-like website for Boost. The value of student-built applications as clear clients of Boost, providing feedback and examples, was reiterated.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/SC722WNWJD5J4X2KCQRP5JOFE2JTFQPW/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [60]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PCAPGHGO6GNE2AXW3OEORMWIGG2IXHQ2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [61]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2013-02-12:</span>
+              <span class="ml-1">A question was raised about Boost's participation in Google Summer of Code (GSoC). Suggestions for projects included C++11 features for existing libraries (MPL, Fusion, Graph, Bind, Optional), a BTree library, and system info library, alongside unique_ptr/unique_array using Boost.Move.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PLMCYRVPJZGX6DRA2BKUYDG357CAUGZH/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [62]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2013-03-04:</span>
+              <span class="ml-1">A brief discussion noted that while some project ideas are great, few might be feasible within the GSoC timeframe, and clear web descriptions for students are beneficial.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.boost.org/archives/list/boost@lists.boost.org/message/ASSVQAX477JLZJD2QCANSCQT4WV5A2M4/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [63]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2014-02-09:</span>
+              <span class="ml-1">Mentors were sought for GSoC 2014. One potential mentor expressed interest in projects related to parallelism or concurrency.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2OKWUXTMUVNVB5XNOWGBKW4KMXF5JTBA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [64]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2015-02-01:</span>
+              <span class="ml-1">A student inquired about prerequisite skills for the GSoC 2015 'Concurrent Hash Tables' project and asked for guidance on getting started.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7SLKCAGYGC2RPPBFSF3IEOVHAMSKSLGH/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [65]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2015-03-23:</span>
+              <span class="ml-1">Another student expressed interest in the 'Concurrent Hash Tables' GSoC project, asking about necessary features beyond the stated ones. A link to a related discussion thread was provided.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PTIGEWJS7ANNDZUZXPIW2XF3T4SYJUHQ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [66]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TCLOR43YIYRBIN5JHWYIG2GGSH35DLCF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [67]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2015-12-20:</span>
+              <span class="ml-1">Guidance for GSoC 2016 applicants stressed the competitive nature of Boost's selection process and advised students to approach past successful participants and to narrow down their project interests.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/6EI2NOGCJALYJSEPQ4ENU5IUYMWBOB4M/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [68]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2016-01-03:</span>
+              <span class="ml-1">A PhD student inquired about the status of two GSoC 2015 projects: 'Concurrent Hash Tables' and 'Boost Document Library development', seeking contacts and information on progress.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/DNHJQYTLPNMMXC4EAETPECNCEZ7EWCJP/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [69]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2016-01-04:</span>
+              <span class="ml-1">Specific project ideas were proposed for GSoC 2016: a dense hash map implementation (potentially memory-mappable) and a constexpr compile-time generated static map. Mentorship was offered for these if the student was outstanding.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/AVR5S6L5QJR5AHTWO4LSGABGNP5N464C/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [70]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2016-01-18:</span>
+              <span class="ml-1">A call for GSoC 2016 mentors and project ideas was issued, highlighting successful projects from the previous year (like Boost.Hana) and the need for a comprehensive project list on the wiki to secure Boost's participation.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3NIXYSVDARR2VIQOQW3TLG3NIOH7JT2I/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [71]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost-users@lists.boost.org/message/3NIXYSVDARR2VIQOQW3TLG3NIOH7JT2I/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [72]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost-announce@lists.boost.org/message/3NIXYSVDARR2VIQOQW3TLG3NIOH7JT2I/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [73]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2017-03-17:</span>
+              <span class="ml-1">The 'static_map' project for GSoC 2017 attracted highly skilled students, with some submitting fully functional constexpr static map implementations as competency tests. This set a high bar for other applicants.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/LXC7SIKDYGRGTX4ZNZVSOI5ILWXZ5ARF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [74]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2018-01-11:</span>
+              <span class="ml-1">Discussions for GSoC 2018 included a student proposing an 'Astronomy' library. A successful GSoC 2017 student proposed further development of Boost.StaticViews, building on the Boost.StaticMap project from the previous year.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXIQVMRM2BPS2Q2HKDOG2RPLYHCMSFRU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [75]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXIQVMRM2BPS2Q2HKDOG2RPLYHCMSFRU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [75]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/TXIQVMRM2BPS2Q2HKDOG2RPLYHCMSFRU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [75]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2018-10-25:</span>
+              <span class="ml-1">A suggestion was made to create curated subsets of Boost, such as 'Boost for Dummies' or a specific deployment for students, to simplify adoption and highlight relevant libraries.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/A6FGH7CC3RZPPUSWT7SK2MPUKN3Y3OUG/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [76]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2019-02-18:</span>
+              <span class="ml-1">A user expressed interest in proposing searching and sorting algorithms for inclusion in Boost libraries, seeking guidance on the process.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/OQLNP7SEX4KAR2MZ22XBD42FTDOHQ655/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [77]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2020-02-26:</span>
+              <span class="ml-1">A call for GSoC 2020 project ideas highlighted a lack of diversity in proposals, with a focus on numerical problems. The need for more projects in data structures and algorithms was expressed to attract a wider range of students.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7JMFOP25H2NAWGQL7EN5JVRWGOMQJ4ZA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [78]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2020-03-20:</span>
+              <span class="ml-1">A student inquired about mentoring for a data structure project, which was not on the official GSoC 2020 list. Advice was given to clearly identify the target Boost library and contact its maintainers.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/RD3G3JKYTCTKUFVN526XPZLNONBOZN2C/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [79]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2023-02-13:</span>
+              <span class="ml-1">Boost announced its candidacy for GSoC 2023 and solicited project ideas from mentors, encouraging them to contribute to the wiki page to help students choose and develop proposals.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/DOYG7KYHIJFMMX52BGOGC6PAR5HYQA7Y/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [80]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-08-11:</span>
+              <span class="ml-1">Antony Polukhin inquired about potential Boost projects suitable for senior students' graduation work, suggesting that mentoring students could be less time-consuming than individual implementation and asking if a list of projects and mentors exists.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PSL5MNR6DJTJB7XQX63K5CLC555ZRDAX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [81]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-08-12:</span>
+              <span class="ml-1">In response to the inquiry about graduation projects, it was suggested that mentors create a database of tasks with associated knowledge levels to help match students to suitable projects, considering their C++ knowledge level.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/BKDAGGFBUA2OW535W2XGFZTZ6EL3GGJU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [82]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-08-19:</span>
+              <span class="ml-1">The idea of a task database was further supported, emphasizing that a mentor should carefully select students based on their varying knowledge levels. Using GitHub for such a database was also proposed.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/J2NICUUOBSCT3UPIXWLRYENI3224STPA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [83]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-25:</span>
+              <span class="ml-1">Francisco Tapia proposed a project idea for concurrent set, multiset, map, and multimap structures based on enhanced red-black trees, which allow positional access. This proposal was aimed at senior students for graduation work, offering O(log N) access time for both value and position.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/CEVCSKL2QPMPRHQNIIHY3YJCLPCXUWXB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [58]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+          </div>
+        </details>
+        
+      </div>
+        
+      <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
+        <h6 class="text-lg font-semibold text-orange mb-3">
+          Discussion on enhancing Boost library testing through fuzzing and potential integration into the release workflow.
+        </h6>
+
+        
+        <details class="mb-3">
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Key Points (5)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <ul class="list-disc list-inside space-y-2 ml-2 mt-2">
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              There is a proposal to identify which Boost libraries 'SHOULD' be fuzzed, suggesting a proactive approach to improving library robustness. This initiative stems from discussions about potential risks in Boost's testing and release workflow.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3I66NH657SP64MDIWD3MFNAUWRCK7JWS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [84]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              A suggestion was made to introduce a website badge to indicate which Boost libraries successfully implement fuzz testing, potentially encouraging wider adoption and highlighting quality.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3I66NH657SP64MDIWD3MFNAUWRCK7JWS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [84]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The contributor guide on fuzzing (https://www.boost.org/doc/contributor-guide/testing/fuzzing.html) was referenced as a helpful resource for implementing fuzz testing within Boost libraries. The author of the page invited feedback for improvements.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3I66NH657SP64MDIWD3MFNAUWRCK7JWS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [84]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PC7BYWL4CCHEGPDSJ43H7KXKHMFRWCP6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [85]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              A specific request was made for assistance in fuzzing the Boost.Unordered library, indicating a need for community support in applying fuzzing techniques to individual components.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3I66NH657SP64MDIWD3MFNAUWRCK7JWS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [84]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PC7BYWL4CCHEGPDSJ43H7KXKHMFRWCP6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [85]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              Fuzzing is already being applied to some libraries, such as Boost.Redis, and other formats like JSON are also being fuzzed, demonstrating existing adoption and effectiveness of the technique.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3I66NH657SP64MDIWD3MFNAUWRCK7JWS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [84]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+          </ul>
+        </details>
+        
+
+        
+        <details>
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Timeline (23 entries)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <div class="space-y-3 mt-2">
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2005-02-09:</span>
+              <span class="ml-1">A discussion point was raised about the lack of integrated tests in Boost submissions, specifically for the Boost.PP library. The author acknowledged this oversight, confirming they had a comprehensive test suite but hadn't automated it for release. They agreed to provide an automated test suite if the library was accepted.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/XALTDDWDQRONLLIBKUGBJTDWWUJCRYXO/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [86]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2005-03-08:</span>
+              <span class="ml-1">A suggestion was made to improve Boost's testing infrastructure by providing platforms for developmental and release testing, or even software for developers. A key requirement was that these testing processes must be fully automatic once set up, indicating a growing need for robust and streamlined testing.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/QV7FIEVEKD62IQKTMHE5YVHWRSYK3CW3/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [87]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2005-12-08:</span>
+              <span class="ml-1">The idea of including 'dummy tests' in Boost submissions was proposed, similar to autoconf macros. These tests would verify a sane configuration and environment, potentially covering specific toolchains or lightweight library code. This would help spare computing power and mail bandwidth by failing early if prerequisites are not met.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/425TT4MPDAQCA5U2R3EQFBHGVDFHEROM/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [88]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2005-12-10:</span>
+              <span class="ml-1">A suggestion was made to add a simple mechanism to disable all BOOST_WORKAROUNDs. This would allow a dedicated group of testers to publish results from tests run without workarounds, aiming for a cleaner Boost library parallel to the current 'hacked' version and challenging implementers to support it.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.boost-users.org/archives/list/boost-users@lists.boost.org/message/JF6WDVBEIKYLJRKALYY6VRQQOSD2N2WM/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [89]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2006-05-27:</span>
+              <span class="ml-1">A discussion touched upon the integration of library testing with the Boost testing system, emphasizing responsiveness to developer needs and showstopper bug reports. The point was made that the library design and its integration with Boost's testing should be carefully considered to avoid issues for libraries like Spirit.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/DK4VDYMYRQSC5HNN2YMW57IV4EZL57AA/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [90]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2007-01-05:</span>
+              <span class="ml-1">For a new library submission (Statistical Distributions and Mathematical Special Functions), instructions were provided to extract it separately from the Boost tree and set BOOST_ROOT. This approach aimed to enable testing without full integration, acknowledging that low tolerances might cause initial test failures requiring human review.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/AYPH6GMKDQHB42O5JWWDK5ILZ6SHSSUB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [91]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NXVTJVEMBOCXOQU6LZPMFGI76LRNOLZ4/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [92]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2007-05-04:</span>
+              <span class="ml-1">A proposed testing strategy for a library (likely Serialization) involved checking in changes, providing a zip file of differences, and offering improved instructions for users to test on their own systems. This approach aimed to be less work for the author and not conflict with other proposals, relying on users to report results for untested compilers.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/HFVVKF7SFDONETJJKPXAV5FPO27WPFT7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [93]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2007-08-01:</span>
+              <span class="ml-1">A discussion on SVN best practices included a proposal for a new system for issuing testing requests. This system aimed to test only one library at a time upon request, making the testing time grow linearly with the number of libraries instead of quadratically, addressing scalability concerns.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/UTGW3GQZ5DQENMFQCHEEQDKTFRVUDDQ2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [94]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2007-10-16:</span>
+              <span class="ml-1">The discussion on release criteria compilers highlighted the importance of knowing which compilers are supported for a given Boost release and library. It was noted that regression tests don't always provide this crucial end-user information, suggesting a need for clearer compiler support statements.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/5EOEPXU2MXWPBIJ3LXGHB7DMY5LCQWTW/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [95]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2008-08-18:</span>
+              <span class="ml-1">A point was made that testing and release procedures should ideally use the last released tool version, not the one currently being refined in the trunk. This aligns with the idea of libraries being tested against the last release before being incorporated into a new one, and also addresses issues with existing tools breaking unexpectedly.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/DTCDU6GH2VYIQKMCUUGF4NCKJ53GEBZ7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [96]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2008-11-22:</span>
+              <span class="ml-1">A suggestion was put forth to automatically detect and flag interface/behavioral changes by running or compiling the unit/regression tests from the previous major release against the current release. The author noted potential problems, including tests exercising implementation details and limited testing resources.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/EWCG6C6VV5YJ4GEYPROWVUH4SJHESJLZ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [97]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2008-11-23:</span>
+              <span class="ml-1">The idea of running older release tests against the current release was further discussed. The author of the suggestion reiterated that preserving older release tests and running them on the current release could help identify changes.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/VIZ7KEBKXWFZRIDWTQXDN66D46SW5CB5/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [98]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2010-03-21:</span>
+              <span class="ml-1">A discussion on the problems with Boost development touched upon the assumption that Boost can release bug-free libraries, even from critical bugs. The point was made that it's unrealistic to expect bug-free software in programming, referencing the UUID example.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/HTVK4OQUCGNU4SRQDTWIE53NW5WE3VXU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [99]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2010-06-02:</span>
+              <span class="ml-1">A proposal for a new testing system was discussed, where changes in library A would only trigger re-runs of library A's tests, not all dependent libraries. This would reduce testing time and costs, making libraries more independently deployable and addressing issues with errors in shared tools like bjam or boost.test.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/YYI3XDKPHLWPZBMM62JFHMHDQPC3NRSU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [100]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2012-09-19:</span>
+              <span class="ml-1">A debate arose about whether Boost libraries should be tested against the trunk or the release version of other Boost libraries. One participant argued that testing against release versions is much less problematic than testing against the trunk, despite potential concerns about the trunk becoming broken.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/OSQ5VLSBHZBS46VVXU443CAJDKE23XTF/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [101]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/RSOX3TERXF6RVYHN5BKOIBV3FYZE6UII/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [102]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/PZTWKS2ZE5A3AZ6WY63IGRYJEA2FOE22/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [103]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2013-08-04:</span>
+              <span class="ml-1">Concerns were raised about the scalability of Boost's testing methodology and the potential for increased testing requirements when enhancing libraries. The author expressed skepticism about the current approach and encouraged users to run library tests in their own environments, noting that few actually do.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/7I7NM35W5LIEAI2RJPSBWOCX7QQG4UW2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [104]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2014-01-18:</span>
+              <span class="ml-1">The maintainer of Boost.Test announced a need for co-developers due to being spread too thin. Tasks included maintenance, developing new features like MT testing and performance testing, and crucially, improving documentation and pushing existing features through the Boost review process.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/Y56MENKPJRBWBKA2B3G2FLXO43FNFCAW/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [105]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2014-01-22:</span>
+              <span class="ml-1">A proposal to fork Boost.Test into a new Boost.XTest was discussed. Concerns were raised about potential name collisions and user confusion. The counter-argument was that Richard (the proposer) is free to develop a new library from scratch, and competition can lead to better products.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/FCKWUA3CAEQFLPMTQ24JXEIZODHMBQM6/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [106]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2IYYAESASB2RKBQR4JGVIEU54NDDYAIN/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [107]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2014-05-21:</span>
+              <span class="ml-1">A proposal for the Boost release process included tagging master branches with a version number and running all tests on these branches before a release. This aims to catch errors where one library's interface changes break dependent libraries, aligning with the idea of ensuring stability.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/OGAGXC3H7DY3KNGXIWULGG6UVFNKEBNZ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [108]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2016-02-17:</span>
+              <span class="ml-1">A library author expressed frustration with the current testing system, stating it couldn't reliably prove their library correct or free of new bugs. They emphasized the need for the test system to function as intended to provide the necessary support, suggesting development efforts should focus on making the test system more robust.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/4W5VX4IVLYCJHOJLTYB5PEFM2IDKDDPV/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [109]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2017-09-27:</span>
+              <span class="ml-1">An invitation was extended to Boost developers to utilize OSS-Fuzz, a continuous automated fuzzing service. An initial setup fuzzing boost::regex successfully found eight bugs, demonstrating the potential of fuzzing for improving library quality and stability.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/6UKVTLNJWFVQCCXZVHHYMNLZHLBEHL3L/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [110]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2017-10-31:</span>
+              <span class="ml-1">A follow-up on the OSS-Fuzz initiative for Boost reiterated the invitation for developers to use the service. It was noted that John Maddock was actively fixing bugs found in boost::regex through fuzzing, highlighting the practical benefits of integrating fuzzing into the development workflow.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/N2NZ7SXFPR3VWQMWJGY6WQ73W7JYYNAT/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [111]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-09-14:</span>
+              <span class="ml-1">A discussion point raised concerns about potential risks in Boost's testing and release workflow. While running tests isn't explicitly part of the release process, it was noted that an erroneous change in a single library could break the entire Boost build, suggesting a need for mitigation strategies.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/XR3H2URBCOHVHDDCYUE3HX22TL6ZUA7Q/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [112]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+          </div>
+        </details>
+        
+      </div>
+        
+      <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
+        <h6 class="text-lg font-semibold text-orange mb-3">
+          Announcement and discussion regarding the upcoming re-review of the Boost.Decimal library
+        </h6>
+
+        
+        <details class="mb-3">
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Key Points (4)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <ul class="list-disc list-inside space-y-2 ml-2 mt-2">
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The re-review of the Boost.Decimal library is scheduled to commence on Monday, October 6th. This review will be conducted by Matt Borland and Chris Kormanyos.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2YIIZFZTBS6A5MUAONSBY67XCHL4W5KJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [113]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/BPSVJOSGVE5XASSIN3LWMZKCAONLHGFG/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [114]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              The reviewers, Matt and Chris, have been actively working on addressing issues identified during the initial review. These issues were formally logged as bug reports.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2YIIZFZTBS6A5MUAONSBY67XCHL4W5KJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [113]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              A link is provided to view the closed issues related to the Boost Review, allowing interested parties to track the resolutions. This aims to provide transparency on the progress made.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2YIIZFZTBS6A5MUAONSBY67XCHL4W5KJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [113]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+            <li class="text-sm text-slate dark:text-white/80">
+              A question was raised about the process for identifying and reaching out to subject matter experts and potential users to solicit their participation in the review. The sender inquired if such outreach would be beneficial.
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.boost.org/archives/list/boost@lists.boost.org/message/BPSVJOSGVE5XASSIN3LWMZKCAONLHGFG/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [115]
+                </a>
+                
+                
+              </span>
+              
+            </li>
+            
+          </ul>
+        </details>
+        
+
+        
+        <details>
+          <summary class="text-sm font-semibold text-slate dark:text-white/90 cursor-pointer hover:text-orange dark:hover:text-orange select-none">
+            Timeline (12 entries)<span class="text-xs font-normal text-gray-500 dark:text-gray-400"></span>
+          </summary>
+          <div class="space-y-3 mt-2">
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2005-01-11:</span>
+              <span class="ml-1">An initial discussion about the need for a decimal and money class in Boost arose. The author questioned the necessity of a decimal type unless it was compatible with the upcoming standard, which was perceived as floating-point based. The focus shifted to whether a fixed-precision solution was viable and if there were real-world applications beyond theoretical cases.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3D2NZXYEKTAXR432CZSHAL7WAMU67D5J/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [116]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2005-01-12:</span>
+              <span class="ml-1">The discussion continued regarding the compatibility of a Boost decimal type with the upcoming standard. It was clarified that compatibility might not mean using the standard's underlying type directly, but rather leveraging its concepts. The potential for a decimal TR to support fixed-point implementations was raised, and the author was encouraged to examine the formal review posts for detailed discussions on the topic.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/VBPPNEG2O4MJPT6Z4DNV6DKCPDLB5XB2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [117]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/UMM7VYRL7MNRNCZO6EEPCW5CFEBRVDUU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [118]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2007-04-20:</span>
+              <span class="ml-1">A reminder was sent out about the ongoing formal review of the proposed Boost Math Toolkit, which included the decimal library. It noted that feedback had been relatively sparse, possibly due to conference schedules and release preparations, encouraging interested parties to provide their input.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NRHAVGX5LWQG6MKOSXHGEIEBNSLVLRSI/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [119]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost-users@lists.boost.org/message/NRHAVGX5LWQG6MKOSXHGEIEBNSLVLRSI/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [120]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-05-14:</span>
+              <span class="ml-1">An announcement was made regarding the beta release of a new library for implementing IEEE 754 decimal floating-point types. The library, developed by Chris Kormanyos and Matt Borland, was made available on GitHub. Initial feedback included praise for the competent implementation but expressed concerns about the wording in the documentation, particularly the definition of decimal floating-point numbers and their exact representation capabilities.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/5UUSXXE53SDCMQ7VZESQC63MCD7OUGOE/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [121]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NCF6F3VVCIE7PLSRI3RC5LMQD57U4IOV/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [122]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-10-04:</span>
+              <span class="ml-1">The authors announced their intention to seek endorsement for the Boost.Decimal library proposal. They detailed its features, including IEEE 754 and TR 24733 compliance, provision of compliant and faster non-compliant types, and STL-like implementations. The rationale for its inclusion in Boost was presented, highlighting the standardization of decimal floating-point types in IEEE 754 and the lack of a C++ standard equivalent.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/3AXABRUZ4Y3EB2S33YX2A4MI4MXC2WSX/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [123]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-10-07:</span>
+              <span class="ml-1">The formal review of the proposed Boost.Decimal library was officially scheduled. The review details were to be posted on the Boost website, and the schedule was made available.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost-announce@lists.boost.org/message/SXHIKUNJCAJIYUASUYVQXONJMMM33BTW/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [124]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/N3PXNBL76JVOORXWSAWHP4GZGMCGPV57/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [125]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2024-10-08:</span>
+              <span class="ml-1">A reviewer expressed concerns about the documentation's 'Motivation and Use Cases' sections, suggesting improvements even before the review started. Specific feedback included the absence of a rounding function for decimal figures and a lack of usage examples in financial calculations or spreadsheet software.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/L4Q5Y6FLZR6GHE3YZJGWQKTAKVVH3MG5/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [126]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-01-15:</span>
+              <span class="ml-1">The formal review for the Boost.Decimal library began, running until January 22nd. The review focused on the design, implementation, documentation, and potential usefulness of the library. Reviewers were asked to provide feedback on their evaluation effort and any issues encountered.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/AGFOQZMJ4HKKQ5C5XDDKNJ3VJL72YTWL/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [127]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/2MRQCWMESZN6LF3N6Y3UVOYD7EFRDOD2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [128]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/4JXFU7ZWLIV64UY33R6VFWI233DE4AOY/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [129]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-01-16:</span>
+              <span class="ml-1">Questions arose regarding the status and future standardization of the ISO/IEC DTR 24733, referenced in the library's documentation. Additionally, the interaction between the Boost.Decimal types and native hardware decimal support was inquired about, with the authors clarifying that direct hardware interoperability was not implemented due to the rarity of such hardware.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/YVUUHVGS2TJDVQU2BRXVU3XBFTPYY3GB/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [130]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/NTWBUACRLOWDS7MG6LE5SF2Y75MAAOM2/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [131]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/T4RJMSN66P36HRZDPDVLJDRNPLYYP7AS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [132]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/X474EYX2SDXHQOP44RIVWHJXBZL2AVXQ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [133]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-01-20:</span>
+              <span class="ml-1">Reviewers provided feedback, with one suggesting a conditional acceptance of the library. Key points included the need for individual header support to improve compile times, fixing or removing the 'sprintf' function, and a general positive assessment of the design and implementation. Discussions also touched upon the library's usefulness in 'human-centric calculations' and financial applications, with some questioning the need for decimal floating-point over fixed-point arithmetic.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/4ICKPKCSSZR55CP3GYTAUOH3VUKRLREU/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [134]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/5JS5NRVN4XVUSWONF4K7BKJS3AQOPGT3/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [135]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/W447G6N4LTV3GVGMSWZ2E3X4UUXNACKJ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [136]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/MYS7YTBPWYPP4PG5VIHEZMZH7PIL6DCZ/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [137]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/OBYL2ZJOBFSDW4YHALFQXOS2DSVRXGMH/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [138]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/L5MXTBLPUL7XNYN4JSHYGS3IFZM7ZDEW/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [139]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-01-21:</span>
+              <span class="ml-1">A reviewer suggested reordering the documentation to place the 'Motivation and Use Cases' section above the API Reference for better clarity and early understanding of the library's purpose.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/6QNBI7IN4QRXEAZGEWKTVXRHSDJDSWQS/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [140]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+            <div class="text-sm text-slate dark:text-white/80 pl-2 border-l-2 border-orange/30">
+              <span class="font-semibold text-orange">2025-01-22:</span>
+              <span class="ml-1">Further review feedback was provided, reiterating concerns about the single-header design and its impact on compile times, suggesting it should be an option rather than the primary or only method of access. The library's benefit for 'human-centric calculations' was acknowledged, though financial applications were still a point of inquiry. The review period concluded on this date.</span>
+              
+              <span class="ml-1">
+                
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/GUZ6WWIVTJNHX33DO45FZJA2ZJVD5CZ7/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [141]
+                </a>
+                
+                <a href="http://lists.boost.org/archives/list/boost@lists.boost.org/message/VRIFXSBVKOWQGA5BMX45IDTFXJMUCFF4/" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange text-xs ml-1">
+                  [142]
+                </a>
+                
+                
+              </span>
+              
+            </div>
+            
+          </div>
+        </details>
+        
+      </div>
+       
+    </div>
+    
+    <p class="mt-4 text-xs text-slate dark:text-white/60 italic">
+      This summary is AI-generated from recent mailing list discussions.
+      Please verify accuracy.
+    </p>
+  </div>
+  
+
+</div>
+
+      
+      </div>
+
+      
+        
+<style>
+  .main-footer {
+    padding: .5rem 1rem;
+    margin: auto;
+  }
+
+  .footer-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    text-align: center;
+    max-width:60rem;
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+    padding-top: .75rem;
+    width: 100%;
+    padding: 0 5rem;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  .links a {
+    display: block;
+    margin: .5rem 0;
+    color: var(--text-color);
+  }
+
+  .links a:hover, .link-icons a:hover {
+    color: var(--primary-color);
+  }
+
+  .link-icons {
+    display:flex;
+    width: 14rem;
+    align-items:center;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .small-text {
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+
+  div:has(.small-text){
+       margin-bottom: 0.75rem;
+  }
+
+  .xsmall-text {
+    font-style: italic;
+    font-size: .75rem;
+    line-height: 1rem;
+  }
+
+@media screen and (max-width: 767px) {
+  .footer {
+    padding-bottom: 2.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .links {
+    flex-direction: column;
+  }
+
+  .footer-container {
+    padding: 0rem 2.25rem 0 2.25rem;
+    margin-top: 0;
+  }
+
+  .link-icons {
+    width: 14rem;
+  }
+}
+</style>
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="links">
+      <a href="https://lists.boost.org/mailman3/lists/boost-users.lists.boost.org/">Contact</a>
+      <a href="http://localhost:8000/privacy/">Privacy Policy</a>
+      <a href="http://localhost:8000/terms-of-use/">Terms of Use</a>
+      <a href="http://localhost:8000/doc/user-guide/reporting-issues.html">Report Bug</a>
+      <div class="link-icons">
+        <a href="https://x.com/boost_libraries" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+<a href="https://bsky.app/profile/boost.org" target="_blank" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+<a href="https://mastodon.social/@boostlibs" target="_blank" title="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+<a href="https://www.reddit.com/user/boostlibs/" target="_blank" title="Reddit"><i class="fa-brands fa-reddit"></i></a>
+<a href="https://github.com/boostorg" target="_blank" title="Github"><i class="fa-brands fa-github"></i></a>
+<a href="https://www.linkedin.com/company/cppalliance/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+
+      </div>
+    </div>
+    <div><span class="small-text">Website supported by grants from <a href="https://cppalliance.org/" target="_blank" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">The C++ Alliance</a>.</span></div>
+    <div><span class="xsmall-text">Distributed under the <a href="http://localhost:8000/LICENSE_1_0.txt" class="text-sky-600 dark:text-sky-300 hover:text-orange dark:hover:text-orange">Boost Software License, Version 1.0</a>.</span></div>
+    
+  </div>
+</footer>
+
+      
+    </div>
+
+
+    
+
+     <script>
+      var r = document.querySelector(':root');
+      const messageVisibilitySeconds = 6;
+      const opacityTransitionTime = 0.15; // matches the tailwind transition-opacity time
+      const delay = ms => new Promise(res => setTimeout(res, ms));
+
+      function modalSize(h,w) {
+        var rs = getComputedStyle(r);
+        r.style.setProperty('--modalWidth', w);
+        r.style.setProperty('--modalHeight', h);
+      }
+
+      /********* Function to open modal ***********/
+      function displayModal(height,width,src) {
+        event.preventDefault()
+        let modal = document.getElementById('modalOverlay');
+        modal.classList.add('show-modal');
+        modalSize(height,width);
+        let modalframe = document.getElementById('modalFrame');
+        modalframe.setAttribute("src", src);
+      }
+
+      function closeModal() {
+        let modal = document.getElementById('modalOverlay');
+        modal.classList.remove('show-modal');
+      }
+
+      const hideMessage = async () => {
+        const message = document.getElementById('messages');
+        message.classList.add('opacity-0');
+        await delay(opacityTransitionTime * 1000);
+        const messageButton = message.querySelector('button');
+        if (messageButton) {
+          messageButton.click();
+        }
+      }
+
+      const providerMatchesLastLogin = async (provider) => {
+        const lastLoginProvider = localStorage.getItem('boostLoginMethod') || null;
+        return provider === lastLoginProvider;
+      }
+
+      const trackLoginUpdateCheck = async () => {
+        const footer = document.querySelector('footer');
+        if (!footer) {
+          return;
+        }
+        const indicator = footer.dataset.trackLoginMethod; // intentionally not cast to boolean
+        const loginMethod = footer.dataset.loginMethod;
+        if (indicator) {
+          if (indicator === 'True') {
+            localStorage.setItem('boostLoginMethod', loginMethod);
+          } else {
+            localStorage.removeItem('boostLoginMethod');
+          }
+        }
+      }
+
+      const changeVersionAndCategory = (event) => {
+        const urlPatterns = {
+          libraries: {
+            regex: /^(https?:\/\/[\S:]+\/libraries\/)([^\/]+)(\/?[a-z]*)(\/?\S*)?\/?$/,
+            substitution: (event) => {
+              switch (event.target.id) {
+                case 'id_category':
+                  return `$1$2$3${event.target.value ? `/${event.target.value}` : ''}/`;
+                case 'id_version':
+                  return `$1${event.target.value}$3$4`;
+                default:
+                  return null;
+              }
+            }
+          },
+          library: {
+            regex: /^(https?:\/\/[\S:]+\/library\/)([^\/]+)\/([^\/]+)\/?$/,
+            substitution: (event) => `$1${event.target.value}/$3/`
+          },
+          releases: {
+            regex: /^(https?:\/\/[\S:]+\/releases\/)([^\/]+)?\/?$/,
+            substitution: (event) => `$1${event.target.value}/`
+          }
+        };
+
+        const currentUrl = window.location.href;
+        for (const key in urlPatterns) {
+          const pattern = urlPatterns[key];
+          if (pattern.regex.test(currentUrl)) {
+            const substitutionString = pattern.substitution(event);
+            if (substitutionString) {
+              window.location.href = currentUrl.replace(pattern.regex, substitutionString);
+            }
+            break;
+          }
+        }
+      }
+
+      const manualPlausibleTrigger = async () => {
+        window.plausible = window.plausible || function() {
+          (window.plausible.q = window.plausible.q || []).push(arguments)
+        }
+        let loc = window.parent.location.href || window.location.href;
+        plausible("pageview", { u: loc + window.location.search });
+      };
+
+      window.addEventListener('DOMContentLoaded', () => {
+        // resets the form on back button press
+        document.getElementById("id_category")?.closest('form').reset();
+        document.getElementById("id_version")?.closest('form').reset();
+        document.getElementById("id_category")?.addEventListener("change", changeVersionAndCategory);
+        document.getElementById("id_version")?.addEventListener("change", changeVersionAndCategory);
+        manualPlausibleTrigger();
+      });
+      (async () => {
+        await trackLoginUpdateCheck();
+        await delay(messageVisibilitySeconds * 1000);
+        await hideMessage();
+      })();
+   </script>
+
+  
+
+<link rel="stylesheet" href="./community_files/print.css" media="print">
+<link rel="stylesheet" href="./community_files/toolbar.css">
+
+
+<script type="module" src="./community_files/toolbar.js.download" async=""></script>
+
+<div id="djDebug" class="" dir="ltr" data-request-id="9864edeb2a074f4eb04e23f19ff3fba5" data-render-panel-url="/__debug__/render_panel/" data-sidebar-url="/__debug__/history_sidebar/" data-default-show="true" hx-preserve="" data-update-on-fetch="False" data-theme="light" data-user-theme="auto">
+  <div class="djdt-hidden" id="djDebugToolbar">
+    <ul id="djDebugPanelList">
+      <li><a id="djHideToolBarButton" href="http://localhost:8000/community/#" title="Hide toolbar">Hide »</a></li>
+      <li>
+        <a id="djToggleThemeButton" href="http://localhost:8000/community/#" title="Toggle Theme">
+          Toggle Theme <svg aria-hidden="true" class="djdt-hidden theme-auto" fill="currentColor" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 16q0 3.264 1.28 6.24t3.392 5.088 5.12 3.424 6.208 1.248q3.264 0 6.24-1.248t5.088-3.424 3.392-5.088 1.28-6.24-1.28-6.208-3.392-5.12-5.088-3.392-6.24-1.28q-3.264 0-6.208 1.28t-5.12 3.392-3.392 5.12-1.28 6.208zM4 16q0-3.264 1.6-6.016t4.384-4.352 6.016-1.632 6.016 1.632 4.384 4.352 1.6 6.016-1.6 6.048-4.384 4.352-6.016 1.6-6.016-1.6-4.384-4.352-1.6-6.048zM16 26.016q2.72 0 5.024-1.344t3.648-3.648 1.344-5.024-1.344-4.992-3.648-3.648-5.024-1.344v20z"></path>
+</svg>
+<svg aria-hidden="true" class="djdt-hidden theme-light" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V4C12.75 4.41421 12.4142 4.75 12 4.75C11.5858 4.75 11.25 4.41421 11.25 4V2C11.25 1.58579 11.5858 1.25 12 1.25ZM3.66865 3.71609C3.94815 3.41039 4.42255 3.38915 4.72825 3.66865L6.95026 5.70024C7.25596 5.97974 7.2772 6.45413 6.9977 6.75983C6.7182 7.06553 6.2438 7.08677 5.9381 6.80727L3.71609 4.77569C3.41039 4.49619 3.38915 4.02179 3.66865 3.71609ZM20.3314 3.71609C20.6109 4.02179 20.5896 4.49619 20.2839 4.77569L18.0619 6.80727C17.7562 7.08677 17.2818 7.06553 17.0023 6.75983C16.7228 6.45413 16.744 5.97974 17.0497 5.70024L19.2718 3.66865C19.5775 3.38915 20.0518 3.41039 20.3314 3.71609ZM12 7.75C9.65279 7.75 7.75 9.65279 7.75 12C7.75 14.3472 9.65279 16.25 12 16.25C14.3472 16.25 16.25 14.3472 16.25 12C16.25 9.65279 14.3472 7.75 12 7.75ZM6.25 12C6.25 8.82436 8.82436 6.25 12 6.25C15.1756 6.25 17.75 8.82436 17.75 12C17.75 15.1756 15.1756 17.75 12 17.75C8.82436 17.75 6.25 15.1756 6.25 12ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H4C4.41421 11.25 4.75 11.5858 4.75 12C4.75 12.4142 4.41421 12.75 4 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM19.25 12C19.25 11.5858 19.5858 11.25 20 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H20C19.5858 12.75 19.25 12.4142 19.25 12ZM17.0255 17.0252C17.3184 16.7323 17.7933 16.7323 18.0862 17.0252L20.3082 19.2475C20.6011 19.5404 20.601 20.0153 20.3081 20.3082C20.0152 20.6011 19.5403 20.601 19.2475 20.3081L17.0255 18.0858C16.7326 17.7929 16.7326 17.3181 17.0255 17.0252ZM6.97467 17.0253C7.26756 17.3182 7.26756 17.7931 6.97467 18.086L4.75244 20.3082C4.45955 20.6011 3.98468 20.6011 3.69178 20.3082C3.39889 20.0153 3.39889 19.5404 3.69178 19.2476L5.91401 17.0253C6.2069 16.7324 6.68177 16.7324 6.97467 17.0253ZM12 19.25C12.4142 19.25 12.75 19.5858 12.75 20V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V20C11.25 19.5858 11.5858 19.25 12 19.25Z" fill="currentColor"></path>
+</svg>
+<svg aria-hidden="true" class="djdt-hidden theme-dark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+
+        </a>
+      </li>
+      
+        
+
+<li id="djdt-HistoryPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtHistoryPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="History" class="HistoryPanel">
+  
+  History
+  
+    
+      <br><small>/community/</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-VersionsPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtVersionsPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Versions" class="VersionsPanel">
+  
+  Versions
+  
+    
+      <br><small>Django 5.2.7</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-TimerPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtTimerPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Time" class="TimerPanel">
+  
+  Time
+  
+    
+      <br><small>CPU: 93.34ms (108.85ms)</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-SettingsPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtSettingsPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Settings from config.settings" class="SettingsPanel">
+  
+  Settings
+  
+    
+      
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-HeadersPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtHeadersPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Headers" class="HeadersPanel">
+  
+  Headers
+  
+    
+      
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-RequestPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtRequestPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Request" class="RequestPanel">
+  
+  Request
+  
+    
+      <br><small>CommunitySummaryView</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-SQLPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtSQLPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="SQL queries from 1 connection" class="SQLPanel">
+  
+  SQL
+  
+    
+      <br><small>2 queries in 3.15ms</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-StaticFilesPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtStaticFilesPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Static files (0 found, 8 used)" class="StaticFilesPanel">
+  
+  Static files
+  
+    
+      <br><small>8 files used</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-TemplatesPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtTemplatesPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Templates (7 rendered)" class="TemplatesPanel">
+  
+  Templates
+  
+    
+      <br><small>community.html</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-AlertsPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtAlertsPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Alerts" class="AlertsPanel">
+  
+  Alerts
+  
+    
+      
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-CachePanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtCachePanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Cache calls from 2 backends" class="CachePanel">
+  
+  Cache
+  
+    
+      <br><small>0 calls in 0.00ms</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-SignalsPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtSignalsPanel" checked="" title="Disable for next and successive requests">
+  
+    <a href="http://localhost:8000/community/#" title="Signals" class="SignalsPanel">
+  
+  Signals
+  
+    
+      <br><small>59 receivers of 15 signals</small>
+    
+  
+  
+    </a>
+  
+</li>
+
+      
+        
+
+<li id="djdt-RedirectsPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtRedirectsPanel" title="Enable for next and successive requests">
+  
+    <div class="djdt-contentless djdt-disabled">
+  
+  Intercept redirects
+  
+  
+    </div>
+  
+</li>
+
+      
+        
+
+<li id="djdt-ProfilingPanel" class="djDebugPanelButton">
+  <input type="checkbox" data-cookie="djdtProfilingPanel" title="Enable for next and successive requests">
+  
+    <div class="djdt-contentless djdt-disabled">
+  
+  Profiling
+  
+  
+    </div>
+  
+</li>
+
+      
+    </ul>
+  </div>
+  <div class="" id="djDebugToolbarHandle" style="top: 265px;">
+    <div title="Show toolbar" id="djShowToolBarButton">
+      <span id="djShowToolBarD">D</span><span id="djShowToolBarJ">J</span>DT
+    </div>
+  </div>
+
+  
+    
+
+
+  <div id="HistoryPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>History</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="VersionsPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Versions</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="TimerPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Time</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="SettingsPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Settings from config.settings</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="HeadersPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Headers</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="RequestPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Request</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="SQLPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>SQL queries from 1 connection</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="StaticFilesPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Static files (0 found, 8 used)</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="TemplatesPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Templates (7 rendered)</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="AlertsPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Alerts</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="CachePanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Cache calls from 2 backends</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+  <div id="SignalsPanel" class="djdt-panelContent djdt-hidden">
+    <div class="djDebugPanelTitle">
+      <h3>Signals</h3>
+      <button type="button" class="djDebugClose">×</button>
+    </div>
+    <div class="djDebugPanelContent">
+      
+        <div class="djdt-loader"></div>
+        <div class="djdt-scroll"></div>
+      
+    </div>
+  </div>
+
+
+  
+    
+
+
+
+  
+    
+
+
+
+  
+  <div id="djDebugWindow" class="djdt-panelContent djdt-hidden"></div>
+</div>
+
+
+
+</body></html>
