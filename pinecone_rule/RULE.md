@@ -13,9 +13,9 @@ When asked to retrieve information or answer questions using Pinecone vector dat
 
 - Check if `python-dotenv>=1.0.0` is installed
 - Check if `pinecone>=3.0.0` is installed
-- Check if `python-dotenv>=1.0.0` is installed
+- Check if `langchain-core>=0.1.0` is installed
 
-- If not installed, run: `pip install python-dotenv>=1.0.0 pinecone>=3.0.0 python-dotenv>=1.0.0`
+- If not installed, run: `pip install python-dotenv>=1.0.0 pinecone>=3.0.0 langchain-core>=0.1.0`
 - Ensure `.env` file exists with required Pinecone configuration:
   - `PINECONE_API_KEY`
   - `PINECONE_INDEX_NAME` (default: "rag-hybrid")
@@ -121,11 +121,11 @@ For each essential document, generate a reference URL based on the namespace and
 
 #### Namespace: "slack"
 
-- Extract `channel_id` and `doc_id` from metadata
-- Extract `timestamp` from metadata
-- URL format: `slack://{team_id}/{channel_id}/{doc_id}`
+- Extract `team_id`, `channel_id` and `doc_id` from metadata
+- Extract message_id from message_id = doc_id.split('.')[0]
+- URL format: `https://app.slack.com/{team_id}/{channel_id}/{message_id}`
 - Alternative format (if available): Use `source` field from metadata directly
-- Example: `slack://team_1/channel_C123456/message_M789012`
+- Example: `https://app.slack.com/client/T123456789/C123456/p1234567890`
 
 #### Namespace: "wg21"
 
@@ -137,10 +137,7 @@ For each essential document, generate a reference URL based on the namespace and
 
 #### Namespace: "cpp-documentation" or "documentation"
 
-- Extract `url` from metadata (if available)
-- If `url` exists, use it directly
-- Otherwise, construct from `source` and `library` fields:
-  - Format: `https://www.boost.org/doc/libs/{version}/libs/{library}/...`
+- Extract `doc_id` or `url` from metadata (if available)
 - Example: `https://www.boost.org/doc/libs/1.89.0/libs/filesystem/doc/index.html`
 
 **Note**: URL generation rules may be updated later. For now, use the patterns above or extract `url` directly from metadata if available.
