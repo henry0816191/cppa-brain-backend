@@ -122,8 +122,8 @@ For each essential document, generate a reference URL based on the namespace and
 #### Namespace: "slack"
 
 - Extract `team_id`, `channel_id` and `doc_id` from metadata
-- Extract message_id from message_id = doc_id.split('.')[0]
-- URL format: `https://app.slack.com/{team_id}/{channel_id}/{message_id}`
+- Extract message_id from message_id = doc_id.replace('.', '')
+- URL format: `https://app.slack.com/{team_id}/{channel_id}/p{message_id}`
 - Alternative format (if available): Use `source` field from metadata directly
 - Example: `https://app.slack.com/client/T123456789/C123456/p1234567890`
 
