@@ -135,6 +135,9 @@ class WG21PaperPreprocessor:
 
         # Parse date to timestamp
         timestamp = self._parse_date_to_timestamp(date_str)
+        if timestamp is None:
+            self.logger.warning(f"Failed to parse date: {date_str}")
+            return None
 
         # Generate doc_id from URL or filename
         doc_id = self._generate_doc_id(url, file_path, doc_number)
@@ -174,6 +177,7 @@ class WG21PaperPreprocessor:
     def _parse_date_to_timestamp(self, date_str: str) -> float:
         """Parse date string to timestamp"""
         if not date_str:
+            print(f"No date string provided")
             return datetime.now().timestamp()
 
         formats = ["%Y-%m-%d", "%Y/%m/%d", "%m/%d/%Y", "%d/%m/%Y"]
@@ -184,7 +188,32 @@ class WG21PaperPreprocessor:
             except ValueError:
                 continue
 
-        return datetime.now().timestamp()
+        print(f"Failed to parse date: {date_str}")
+        try:
+            fmt = "%Y%m%d"
+            dt = datetime.strptime(date_str.strip(), fmt)
+            return dt.timestamp()
+        except ValueError:
+            pass
+
+        try:
+            elements = date_str.replace("\xad", "").split("-")
+            if len(elements) == 1:
+                elements = elements[0].split("‐")
+            if len(elements) == 3:
+                year, month, day = elements
+                year = int(year)
+                month = int(month)
+                day = int(day)
+                if month > 12:
+                    month = month - 10
+                dt = datetime(year, month, day)
+                return dt.timestamp()
+        except ValueError:
+            pass
+
+        print(f"Failed to parse date: {date_str}")
+        return None
 
     def _generate_doc_id(
         self, url: str, file_path: Path, doc_number: Optional[str]
