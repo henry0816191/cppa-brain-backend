@@ -12,6 +12,11 @@ from tqdm import tqdm
 import logging
 
 from config import SlackConfig
+from preprocessor.utility import (
+    clean_text,
+    validate_content_length,
+    filter_sentence,
+)
 
 try:
     from psycopg2.extras import RealDictCursor
@@ -39,77 +44,6 @@ class SlackPreprocessor:
         self._validate_imports()
         self.slack_config = slack_config or SlackConfig()
         self._connection_pool: Optional[pool.ThreadedConnectionPool] = None
-
-        # Greeting and unessential words to filter
-        self._greeting_words = {
-            "hi",
-            "hello",
-            "hey",
-            "good morning",
-            "good afternoon",
-            "good evening",
-            "greetings",
-            "howdy",
-            "sup",
-            "what's up",
-            "yo",
-            "hii",
-            "helloo",
-            "thanks",
-            "thank you",
-            "thx",
-            "ty",
-            "appreciate it",
-            "cheers",
-            "nice to meet you",
-            "happy to be here",
-            "happy to have you here",
-            "glad to see you",
-            "glad to see you here",
-            "glad to be here",
-            "bye",
-            "goodbye",
-            "see you later",
-            "see you soon",
-            "see you tomorrow",
-            "see you next week",
-            "see you next month",
-            "see you next year",
-            "see you in the future",
-        }
-        self._unessential_words = {
-            "ok",
-            "okay",
-            "sure",
-            "yeah",
-            "yep",
-            "yup",
-            "nope",
-            "nah",
-            "lol",
-            "haha",
-            "hahaha",
-            "hehe",
-            "lmao",
-            "rofl",
-            "👍",
-            "👎",
-            "😊",
-            "😄",
-            "😀",
-            "👍🏻",
-            "👌",
-            "got it",
-            "gotcha",
-            "nice",
-            "awesome",
-            "great",
-            "uhm",
-            "um",
-            "uh",
-            "erm",
-            "of course",
-        }
 
     def _validate_imports(self) -> None:
         """Validate that required imports are available."""
@@ -299,7 +233,7 @@ class SlackPreprocessor:
             if not text:
                 continue
             filtered = self._filter_unessential_words(text)
-            if filtered and len(filtered.strip()) >= 10:
+            if filtered and validate_content_length(filtered, min_length=10):
                 merged_parts.append(filtered)
                 if msg_id := msg.get("id"):
                     message_ids.append(msg_id)
@@ -407,34 +341,17 @@ class SlackPreprocessor:
 
         text = self._clean_slack_text(text)
         text = re.sub(r":[\w+-]+:", "", text)  # Remove emoji patterns
-        text = re.sub(r"\s+", " ", text).strip()
+        text = clean_text(text, remove_extra_spaces=True)
 
         sentences = re.split(r"[.!?]\s+", text)
-        filtered = [
-            self._filter_sentence(s)
-            for s in sentences
-            if s.strip() and self._filter_sentence(s)
-        ]
+        filtered = []
+        for s in sentences:
+            if not s.strip():
+                continue
+            f = filter_sentence(s)
+            if f:
+                filtered.append(f)
         return ". ".join(filtered).strip()
-
-    def _filter_sentence(self, sentence: str) -> str:
-        """Filter a single sentence, removing greeting/unessential words."""
-        sentence = sentence.strip()
-        if not sentence:
-            return ""
-
-        sentence_lower = sentence.lower()
-        greeting_words = [w for w in self._greeting_words if w in sentence_lower]
-        unessential_words = [w for w in self._unessential_words if w in sentence_lower]
-
-        if greeting_words or unessential_words:
-            for word in greeting_words + unessential_words:
-                sentence_lower = sentence_lower.replace(word, "")
-
-        if len(sentence_lower.strip().split()) <= 3:
-            return ""
-
-        return sentence_lower.strip()
 
     def _convert_messages_to_documents(
         self, grouped_messages: List[Dict[str, Any]]
@@ -461,7 +378,7 @@ class SlackPreprocessor:
         Convert a grouped message (from filter_and_group_messages) to a Document.
         """
         text = group.get("text", "").strip()
-        if not text or len(text) < 10:  # Skip very short messages
+        if not validate_content_length(text, min_length=10):  # Skip very short messages
             return None
 
         message_id = group.get("id", "")
