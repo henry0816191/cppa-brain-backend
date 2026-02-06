@@ -28,24 +28,22 @@ class PineconeConfig:
     environment: str = os.getenv("PINECONE_ENVIRONMENT", "us-central1")
     cloud: str = os.getenv("PINECONE_CLOUD", "gcp")
 
-    if IS_TEST:
-        api_key: str = os.getenv("TEST_PINECONE_API_KEY", "your-pinecone-api-key-here")
-        environment: str = os.getenv("TEST_PINECONE_ENVIRONMENT", "us-east-1")
-        cloud: str = os.getenv("TEST_PINECONE_CLOUD", "aws")
-
     index_name: str = os.getenv("PINECONE_INDEX_NAME", "rag-hybrid")
     # Note: dimension is automatically set by Pinecone when using integrated embeddings
     top_k: int = 5  # Default number of documents to retrieve
-    chunk_size: int = int(
-        os.getenv("PINECONE_CHUNK_SIZE", "1000")
-    )  # Document chunk size
-    chunk_overlap: int = int(
-        os.getenv("PINECONE_CHUNK_OVERLAP", "200")
-    )  # Chunk overlap
-    batch_size: int = int(
-        os.getenv("PINECONE_BATCH_SIZE", "96")
-    )  # Batch size for upserting documents
-    rerank_model = os.getenv("PINECONE_RERANK_MODEL", "bge-reranker-v2-m3")
+    chunk_size: int = 1000
+    # Document chunk size in characters
+    # Note: Chunk size compatibility:
+    # - llama-text-embed-v2 (dense): max 2048 tokens, recommends 400-500 tokens (~1600-2000 chars)
+    # - pinecone-sparse-english-v0 (sparse): default 512 tokens, max 2048 tokens (if configured)
+    # Current 1000 chars (~200-250 tokens) is safe for both models but smaller than optimal for dense.
+    chunk_overlap: int = 200
+    # Chunk overlap in characters
+    batch_size: int = 96
+    # Batch size for upserting documents
+    rerank_model = "bge-reranker-v2-m3"
+    min_text_length: int = 10
+    min_words: int = 3
 
 
 @dataclass
@@ -95,7 +93,11 @@ class LoggingConfig:
 class MailConfig:
     """Mail preprocessor configuration"""
 
-    mail_data_dir: str = os.getenv("MAIL_DATA_DIR", "data/message_by_thread")
+    # mail_data_dir: str = os.getenv("MAIL_DATA_DIR", "data/message_by_thread/en")
+    mail_data_dir: str = os.getenv("MAIL_DATA_DIR", "data/message_by_thread/json")
+    markdown_data_dir: str = os.getenv(
+        "MARKDOWN_DATA_DIR", "data/message_by_thread/markdown"
+    )
     namespace: str = os.getenv("MAIL_NAMESPACE", "mailing")
 
 
@@ -126,6 +128,63 @@ class SlackConfig:
 
 
 @dataclass
+class WG21Config:
+    """WG21 paper preprocessor configuration"""
+
+    data_dir: str = os.getenv("WG21_DATA_DIR", "data/wg21_paper_1989_2025")
+    namespace: str = os.getenv("WG21_NAMESPACE", "wg21-papers")
+
+
+@dataclass
+class YouTubeConfig:
+    """YouTube video preprocessor configuration"""
+
+    transcripts_dir: str = os.getenv(
+        "YOUTUBE_TRANSCRIPTS_DIR", "data/youtube/transcripts"
+    )
+    metainfo_json_dir: str = os.getenv(
+        "YOUTUBE_METAINFO_JSON_DIR", "data/youtube/metainfo/missing_json"
+    )
+    metainfo_raw_dir: Optional[str] = os.getenv("YOUTUBE_METAINFO_RAW_DIR", None)
+    namespace: str = os.getenv("YOUTUBE_NAMESPACE", "youtube-scripts")
+
+
+@dataclass
+class BlogPdfConfig:
+    """Blog PDF preprocessor configuration (e.g. Bjarne Stroustrup papers)"""
+
+    data_dir: str = os.getenv(
+        "BLOG_PDF_DATA_DIR",
+        "data/blog-posts/Bjarne Stroustrup",
+    )
+    namespace: str = os.getenv("BLOG_PDF_NAMESPACE", "stroustrup-papers")
+    author: str = os.getenv("BLOG_PDF_AUTHOR", "Bjarne Stroustrup")
+    source_url: str = os.getenv("BLOG_PDF_SOURCE_URL", "https://www.stroustrup.com")
+
+
+@dataclass
+class BlogConfig:
+    """Blog preprocessor configuration (JSON + PDF under data/blog-posts)"""
+
+    data_dir: str = os.getenv("BLOG_DATA_DIR", "data/blog-posts")
+    namespace: str = os.getenv("BLOG_NAMESPACE", "blog-posts")
+    include_pdf: bool = os.getenv("BLOG_INCLUDE_PDF", "true").lower() in (
+        "true",
+        "1",
+        "yes",
+    )
+
+
+@dataclass
+class GitConfig:
+    """GitHub issue/PR preprocessor configuration"""
+
+    data_dir: str = os.getenv("GIT_DATA_DIR", "data/github")
+    namespace: str = os.getenv("GIT_NAMESPACE", "github-compiler")
+    min_content_length: int = int(os.getenv("GIT_MIN_CONTENT_LENGTH", "10"))
+
+
+@dataclass
 class RAGConfig:
     """Main RAG pipeline configuration"""
 
@@ -138,6 +197,11 @@ class RAGConfig:
     mail: MailConfig = field(default_factory=MailConfig)
     docu: DocuConfig = field(default_factory=DocuConfig)
     slack: SlackConfig = field(default_factory=SlackConfig)
+    wg21: WG21Config = field(default_factory=WG21Config)
+    youtube: YouTubeConfig = field(default_factory=YouTubeConfig)
+    blog_pdf: BlogPdfConfig = field(default_factory=BlogPdfConfig)
+    blog: BlogConfig = field(default_factory=BlogConfig)
+    git: GitConfig = field(default_factory=GitConfig)
 
     # Metadata filtering example
     default_metadata_filter: Optional[dict] = None  # e.g., {"project": "RAG"}
