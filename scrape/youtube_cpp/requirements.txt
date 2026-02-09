@@ -1,0 +1,21 @@
+# Core dependencies
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.1
+google-auth-oauthlib>=1.1.0
+
+# HTTP client
+httplib2>=0.22.0
+
+# Video download and transcript extraction
+yt-dlp>=2024.1.0
+# Required for YouTube (solves n-challenge; needs a JS runtime: Deno or Node)
+yt-dlp-ejs>=0.4.0
+
+# Utilities
+tqdm>=4.66.0  # Progress bars
+
+# Optional but recommended
+urllib3>=2.0.0  # HTTP client improvements
+certifi>=2023.0.0  # SSL certificates
+python-dotenv>=1.0.0  # Load .env for YOUTUBE_API_KEY
+
