@@ -1,0 +1,27 @@
+# Data and output (do not commit scraped data)
+data/
+progress*.json
+
+# Secrets and local overrides (never commit)
+*.pem
+.env
+.env.local
+yt_config.local.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Logs
+*.log
+logs/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
