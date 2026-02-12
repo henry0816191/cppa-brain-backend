@@ -10,22 +10,89 @@ doc_id, title, url, author, timestamp, type, etc.
 - PDF: uses PdfPreprocessor per author subdir; metadata from pdf_preprocessor.
 """
 
+import hashlib
 import json
 import logging
+import re
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import List, Optional, Tuple
 
 from langchain_core.documents import Document
 
 from config import BlogConfig, BlogPdfConfig
 from preprocessor.pdf_preprocessor import PdfPreprocessor
 from preprocessor.utility import (
-    validate_content_length,
-    timestamp_from_published,
+    sanitize_path_component,
     timestamp_from_filename,
+    timestamp_from_published,
+    validate_content_length,
 )
 
 logger = logging.getLogger(__name__)
+
+# Markdown horizontal rule between title, meta, and content
+MD_SPLIT_LINE = "---"
+
+# Main section keywords for blog-pdf: lines that become ### Section (case-insensitive)
+PDF_SECTION_KEYWORDS = frozenset(
+    {
+        "abstract",
+        "introduction",
+        "references",
+        "bibliography",
+        "conclusion",
+        "conclusions",
+        "appendix",
+        "acknowledgments",
+        "acknowledgements",
+        "overview",
+        "background",
+        "related work",
+        "discussion",
+        "results",
+        "method",
+        "methods",
+        "implementation",
+        "summary",
+        "preface",
+        "foreword",
+        "table of contents",
+        "contents",
+        "index",
+    }
+)
+
+
+def _normalize_blog_pdf_content(content: str) -> str:
+    """
+    Normalize content from blog-pdf: join lines ending with hyphen, add ### for section headers.
+    """
+    if not content or not content.strip():
+        return content
+    lines = content.split("\n")
+    # 1) Join lines that end with '-' (hyphenation) with the next line, removing the '-'
+    merged: List[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        while line.rstrip().endswith("-") and i + 1 < len(lines):
+            line = line.rstrip()[:-1] + lines[i + 1].lstrip()
+            i += 1
+        merged.append(line)
+        i += 1
+    # 2) Prefix main section keywords with ###
+    result: List[str] = []
+    for line in merged:
+        stripped = line.strip()
+        # Remove leading numbering like "1." or "1. "
+        normalized = re.sub(r"^\s*\d+\.?\s*", "", stripped)
+        normalized_clean = normalized.strip()
+        if normalized_clean and normalized_clean.lower() in PDF_SECTION_KEYWORDS:
+            result.append("### " + normalized_clean)
+        else:
+            result.append(line)
+    return "\n".join(result)
 
 
 def _json_to_document(json_path: Path) -> Optional[Document]:
@@ -39,7 +106,7 @@ def _json_to_document(json_path: Path) -> Optional[Document]:
     if not url:
         logger.debug("Skip %s: no link/url", json_path.name)
         return None
-
+    url = url.replace(".html.html", ".html")
     title = (data.get("title") or "").strip()
     author = (data.get("author") or "").strip()
     published_parsed = data.get("published_parsed")
@@ -138,6 +205,84 @@ class BlogPreprocessor:
             len(documents) - json_count,
         )
         return documents
+
+    def convert_md(
+        self,
+        output_dir: Optional[Path] = None,
+        limit: Optional[int] = None,
+    ) -> int:
+        """
+        Convert blog documents (from load_documents) to markdown files.
+
+        Writes one .md per document to:
+          {output_dir}/{author_name}/{original_file_name}.md
+
+        Structure: title (# title), meta (author, url, published time ISO, type),
+        content. Filename is derived from title + url hash when original path is unknown.
+
+        Args:
+            output_dir: Base directory (default: data/blog-posts/md).
+            limit: Max number of documents to convert (passed to load_documents).
+
+        Returns:
+            Number of markdown files written.
+        """
+        base = Path(output_dir) if output_dir else self.data_dir / "md"
+        base.mkdir(parents=True, exist_ok=True)
+
+        documents = self.load_documents(limit=limit)
+        written = 0
+        for doc in documents:
+            try:
+                meta = doc.metadata or {}
+                author = sanitize_path_component(
+                    (meta.get("author") or "unknown").strip()
+                )
+                title = (meta.get("title") or "untitled").strip()
+                url = (meta.get("url") or "").strip()
+                doc_type = meta.get("type") or "blog-html"
+                timestamp = meta.get("timestamp")
+                if timestamp is not None and isinstance(timestamp, (int, float)):
+                    try:
+                        published_iso = (
+                            datetime.utcfromtimestamp(float(timestamp)).isoformat()
+                            + "Z"
+                        )
+                    except (TypeError, ValueError, OSError):
+                        published_iso = ""
+                else:
+                    published_iso = ""
+
+                slug = sanitize_path_component(title, max_length=80)
+                file_name = f"{published_iso[:10]}_{slug}.md"
+                out_path = base / author / file_name
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+
+                title_line = f"# {title}"
+                meta_lines = [
+                    f"author: {meta.get('author', '')}",
+                    f"url: {url}",
+                    f"published: {published_iso}",
+                    f"type: {doc_type}",
+                ]
+                content = doc.page_content or ""
+                if doc_type == "blog-pdf":
+                    content = _normalize_blog_pdf_content(content)
+                md_body = "\n\n".join(
+                    [
+                        title_line,
+                        MD_SPLIT_LINE,
+                        "  \n".join(meta_lines),
+                        MD_SPLIT_LINE,
+                        content,
+                    ]
+                )
+                out_path.write_text(md_body, encoding="utf-8")
+                written += 1
+            except Exception as e:  # pylint: disable=broad-except
+                logger.warning("Failed to convert blog doc to MD: %s", e)
+        logger.info("Wrote %d blog markdown files to %s", written, base)
+        return written
 
 
 def _default_source_url_for_author(author: str) -> str:

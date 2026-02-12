@@ -271,6 +271,30 @@ def timestamp_from_published(published: Any) -> float:
     return 0.0
 
 
+def sanitize_path_component(name: str, max_length: int = 200) -> str:
+    """
+    Make a string safe for use as a path component (directory or filename).
+
+    Replaces characters that are invalid on common filesystems with underscore,
+    strips leading/trailing dots and spaces, and truncates to max_length.
+
+    Args:
+        name: Raw string (e.g. title, channel name, author).
+        max_length: Maximum length of the returned string.
+
+    Returns:
+        Safe path component string.
+    """
+    if not name or not isinstance(name, str):
+        return "unknown"
+    # Replace invalid path chars (Windows / Linux)
+    s = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "_", name)
+    s = s.strip(" .")
+    if not s:
+        return "unknown"
+    return s[:max_length] if len(s) > max_length else s
+
+
 def clean_text(text: str, remove_extra_spaces: bool = True) -> str:
     """
     Clean and normalize text content.
@@ -455,6 +479,7 @@ def normalize_metadata_value(value: Any) -> Any:
 def safe_int(value: Any, default: int = 0) -> int:
     """
     Safely convert value to integer.
+    Supports "K" (thousands) and "M" (millions) suffixes, e.g. "1.5K" -> 1500, "2M" -> 2000000.
 
     Args:
         value: Value to convert
@@ -466,6 +491,10 @@ def safe_int(value: Any, default: int = 0) -> int:
     Examples:
         >>> safe_int("123")
         123
+        >>> safe_int("1.5K")
+        1500
+        >>> safe_int("2M")
+        2000000
         >>> safe_int("abc", default=0)
         0
         >>> safe_int(None, default=0)
@@ -479,6 +508,11 @@ def safe_int(value: Any, default: int = 0) -> int:
             value = value.strip()
             if not value:
                 return default
+            # Handle K (thousands) or M (millions) suffix
+            if value[-1:].upper() == "K":
+                return int(float(value[:-1]) * 1000)
+            if value[-1:].upper() == "M":
+                return int(float(value[:-1]) * 1_000_000)
         return int(value)
     except (ValueError, TypeError):
         return default
@@ -652,3 +686,27 @@ def time_to_seconds(time_str: str) -> float:
     except (ValueError, IndexError) as e:
         logger.warning(f"Error parsing time string {time_str}: {e}")
         return 0.0
+
+
+def seconds_to_hhmmss(seconds: float) -> str:
+    """
+    Convert seconds to "HH:MM:SS" format (e.g. 00:01:30).
+
+    Args:
+        seconds: Time in seconds (float; fractional part is truncated).
+
+    Returns:
+        String in format "HH:MM:SS".
+
+    Examples:
+        >>> seconds_to_hhmmss(90.7)
+        '00:01:30'
+        >>> seconds_to_hhmmss(3661)
+        '01:01:01'
+    """
+    s = max(0, int(seconds))
+    hours = s // 3600
+    s %= 3600
+    minutes = s // 60
+    secs = s % 60
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}"

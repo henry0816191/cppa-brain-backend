@@ -8,6 +8,7 @@ to create documents for RAG indexing.
 import json
 import logging
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -20,9 +21,18 @@ from preprocessor.utility import (
     get_timestamp_from_date,
     normalize_metadata_value,
     safe_int,
+    sanitize_path_component,
+    seconds_to_hhmmss,
     time_to_seconds,
     truncate_text,
     validate_content_length,
+)
+
+from search_terms import (
+    SEARCH_TERMS,
+    C_PLUS_PLUS_CREATORS,
+    C_PLUS_PLUS_PLAYLISTS,
+    C_PLUS_PLUS_CHANNELS,
 )
 
 logger = logging.getLogger(__name__)
@@ -160,8 +170,12 @@ class YouTubePreprocessor:
             content_parts.append(f"Title: {metadata['title']}")
         if metadata.get("channel_title"):
             content_parts.append(f"Channel Title: {metadata['channel_title']}")
+        if metadata.get("speakers"):
+            content_parts.append(f"Speakers: {metadata['speakers']}")
         if metadata.get("search_term"):
             content_parts.append(f"Search Term: {metadata['search_term']}")
+        if metadata.get("csv_date"):
+            content_parts.append(f"Meeting Date: {metadata['csv_date']}")
         if metadata.get("description"):
             desc = truncate_text(metadata["description"], max_length=500)
             content_parts.append(f"Description: {desc}")
@@ -345,6 +359,189 @@ class YouTubePreprocessor:
             logger.error("Error computing chunk boundaries: %s", e)
             return [0], [len(segments) - 1]
         return start_idxs, ed_idxs
+
+    def _merge_segments_for_md(
+        self, segments: List[Dict[str, Any]], min_chars: int = 300, max_chars: int = 500
+    ) -> List[Dict[str, Any]]:
+        """
+        Merge consecutive segments into chunks of min_chars–max_chars, preferring
+        whole sentences. Returns list of dicts with 'start_time' and 'text'.
+        """
+        if not segments:
+            return []
+        chunks: List[Dict[str, Any]] = []
+        current_start = segments[0]["start_time"]
+        current_text: List[str] = []
+        current_len = 0
+
+        for seg in segments:
+            text = (seg.get("text") or "").strip()
+            if not text:
+                continue
+            seg_start = seg["start_time"]
+
+            # Split by sentences when possible
+            parts = re.split(r"(?<=[.!?])\s+", text)
+            for part in parts:
+                part = part.strip()
+                if not part:
+                    continue
+                part_len = len(part) + (1 if current_text else 0)
+
+                if current_len + part_len > max_chars and current_text:
+                    chunk_text = " ".join(current_text)
+                    chunks.append({"start_time": current_start, "text": chunk_text})
+                    current_text = [part]
+                    current_start = seg_start
+                    current_len = len(part)
+                else:
+                    current_text.append(part)
+                    current_len += part_len
+
+        if current_text:
+            chunks.append({"start_time": current_start, "text": " ".join(current_text)})
+        # Merge last chunk into previous if it's below min_chars and we have multiple
+        if len(chunks) >= 2 and len(chunks[-1]["text"]) < min_chars:
+            chunks[-2]["text"] = chunks[-2]["text"] + " " + chunks[-1]["text"]
+            chunks.pop()
+        return chunks
+
+    def convert_md(
+        self,
+        output_dir: Optional[Path] = None,
+        limit: Optional[int] = None,
+        video_ids: Optional[List[str]] = None,
+    ) -> int:
+        """
+        Convert YouTube transcripts and metadata to markdown files.
+
+        Writes one .md per video to:
+          {output_dir}/{channel_title}/{video_id}_{title}.md
+
+        Structure: title (# {id}_{title}), meta (channel_title, url, published_at,
+        duration_seconds, view_count, like_count, description, speakers), content
+        with [start_time] script lines (300–500 chars per block, whole sentences).
+
+        Args:
+            output_dir: Base directory (default: data/youtube/md).
+            limit: Max number of videos to convert.
+            video_ids: Optional list of video IDs to convert.
+
+        Returns:
+            Number of markdown files written.
+        """
+        base = Path(output_dir) if output_dir else self.transcripts_dir.parent / "md"
+        base.mkdir(parents=True, exist_ok=True)
+
+        self._load_video_ids()
+        available = [
+            vid
+            for vid in self.scripts_ids
+            if vid in self.metainfo_ids and (not video_ids or vid in video_ids)
+        ]
+        if limit and len(available) > limit:
+            available = available[:limit]
+
+        written = 0
+        for video_id in tqdm(available, desc="Converting YouTube to MD"):
+            try:
+                metadata = self._load_metadata(video_id)
+                segments = self._load_transcript(video_id)
+                if not metadata or not segments:
+                    continue
+
+                duration_seconds = safe_int(metadata.get("duration_seconds", 0))
+                if duration_seconds < 60:
+                    continue
+
+                chunks = self._merge_segments_for_md(segments)
+
+                channel_title = sanitize_path_component(
+                    normalize_metadata_value(metadata.get("channel_title", ""))
+                    or "unknown"
+                )
+                title_safe = sanitize_path_component(
+                    (metadata.get("title") or "untitled").strip(), max_length=120
+                )
+
+                title_line = f"# {(metadata.get('title') or 'untitled').strip()}"
+                url = f"https://www.youtube.com/watch?v={video_id}"
+                published_at = metadata.get("published_at") or ""
+                try:
+                    ts = get_timestamp_from_date(str(published_at))
+                    published_iso = (
+                        datetime.utcfromtimestamp(ts).isoformat() + "Z" if ts else ""
+                    )
+                except (TypeError, ValueError, OSError):
+                    published_iso = str(published_at) if published_at else ""
+
+                meta_lines = [
+                    "channel_title: "
+                    + normalize_metadata_value(metadata.get("channel_title", "")),
+                    "url: " + url,
+                    "published_at: " + published_iso,
+                    "duration_seconds: "
+                    + str(safe_int(metadata.get("duration_seconds", 0))),
+                    "view_count: " + str(safe_int(metadata.get("view_count", 0))),
+                    "like_count: " + str(safe_int(metadata.get("like_count", 0))),
+                    "description: "
+                    + (metadata.get("description") or "").strip().replace("\n", " "),
+                    "speakers: " + (metadata.get("speakers") or "").strip(),
+                ]
+                content_lines = [
+                    f"[{seconds_to_hhmmss(c['start_time'])}] {c['text']}"
+                    for c in chunks
+                ]
+                content = "\n\n".join(content_lines)
+                if len(content) < 500:
+                    continue
+
+                split_line = "---"
+                md_body = "\n\n".join(
+                    [
+                        title_line,
+                        split_line,
+                        "  \n".join(meta_lines),
+                        split_line,
+                        content,
+                    ]
+                )
+
+                file_name = sanitize_path_component(f"{title_safe}.md", max_length=200)
+
+                parent_name = metadata.get("search_term", "")
+                if (
+                    channel_title in C_PLUS_PLUS_CHANNELS
+                    or channel_title in C_PLUS_PLUS_CREATORS
+                    or channel_title in C_PLUS_PLUS_PLAYLISTS
+                ):
+                    parent_name = channel_title
+                elif parent_name == "":
+                    for tag in metadata.get("tags", []):
+                        if tag in SEARCH_TERMS:
+                            parent_name = tag
+                            break
+                    if parent_name == "":
+                        for term in SEARCH_TERMS:
+                            if term in content:
+                                parent_name = term
+                                break
+                    if parent_name == "" and ("c++" in content or "C++" in content):
+                        parent_name = "C++ discussion"
+
+                    if parent_name == "" and "boost" in content or "Boost" in content:
+                        parent_name = "Boost discussion"
+                    if parent_name == "":
+                        continue
+
+                out_path = base / parent_name / file_name
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                out_path.write_text(md_body, encoding="utf-8")
+                written += 1
+            except Exception as e:  # pylint: disable=broad-except
+                logger.warning("Failed to convert video %s to MD: %s", video_id, e)
+        logger.info("Wrote %d YouTube markdown files to %s", written, base)
+        return written
 
     def get_video_statistics(self) -> Dict[str, Any]:
         """

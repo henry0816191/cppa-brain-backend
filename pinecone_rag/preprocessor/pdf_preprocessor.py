@@ -70,8 +70,9 @@ class PdfPreprocessor:
 
         for pdf_path in pdf_paths:
             try:
-                docs = self._pdf_to_documents(pdf_path, fitz)
-                documents.extend(docs)
+                doc = self._pdf_to_documents(pdf_path, fitz)
+                if doc:
+                    documents.append(doc)
             except OSError as e:
                 logger.exception("Error reading PDF %s: %s", pdf_path.name, e)
             except Exception as e:  # pylint: disable=broad-except
@@ -105,30 +106,27 @@ class PdfPreprocessor:
         )
         return title, created_at, time_stamp, url, total_pages
 
-    def _pdf_to_documents(self, pdf_path: Path, fitz) -> List[Document]:
+    def _pdf_to_documents(self, pdf_path: Path, fitz) -> Optional[Document]:
         """Convert one PDF file to a list of Documents (one per page) using PyMuPDF."""
         doc = fitz.open(str(pdf_path))
         title, _created_at, time_stamp, url, total_pages = self._pdf_doc_metadata(
             doc, pdf_path
         )
-        documents: List[Document] = []
+        text = ""
         for page_num in range(total_pages):
-            text = doc[page_num].get_text()
-            if not validate_content_length(text, min_length=30):
-                continue
-            documents.append(
-                Document(
-                    page_content=text,
-                    metadata={
-                        "doc_id": f"{url}#p{page_num + 1}",
-                        "type": "blog-pdf",
-                        "author": self.author,
-                        "title": title,
-                        "url": url,
-                        "page": page_num + 1,
-                        "total_pages": total_pages,
-                        "timestamp": time_stamp,
-                    },
-                )
-            )
-        return documents
+            text = f"{text}\n{doc[page_num].get_text()}"
+
+        if not validate_content_length(text, min_length=30):
+            return None
+        return Document(
+            page_content=text,
+            metadata={
+                "doc_id": f"{url}#p{page_num + 1}",
+                "type": "blog-pdf",
+                "author": self.author,
+                "title": title,
+                "url": url,
+                "total_pages": total_pages,
+                "timestamp": time_stamp,
+            },
+        )
