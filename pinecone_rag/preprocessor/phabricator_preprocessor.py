@@ -30,10 +30,12 @@ _CLOSED_STATES = {"closed", "abandoned", "merged"}
 
 
 def _is_valid_content(text: str, min_length: int) -> bool:
+    """Return True if text is non-empty and has at least min_length characters (after strip)."""
     return bool(text and len(text.strip()) >= min_length)
 
 
 def _parse_created_at_to_timestamp(value: str) -> float:
+    """Parse Phabricator 'Created at' date string to Unix timestamp (UTC). Returns 0.0 on empty or parse failure."""
     if not value:
         return 0.0
 
@@ -52,6 +54,7 @@ def _parse_created_at_to_timestamp(value: str) -> float:
 
 
 def _extract_metadata(md_text: str, file_path: Path) -> Dict[str, Any]:
+    """Parse markdown content for D-number, title, state, author, URL and timestamps; return metadata dict."""
     lines = md_text.splitlines()
     first_line = lines[0].strip() if lines else ""
 
@@ -102,6 +105,7 @@ def _extract_metadata(md_text: str, file_path: Path) -> Dict[str, Any]:
 
 
 def _load_pr_document(md_path: Path, min_content_length: int) -> Optional[Document]:
+    """Load one Phabricator markdown file and convert it into a Document with extracted metadata."""
     try:
         content = md_path.read_text(encoding="utf-8", errors="replace").strip()
     except OSError as exc:
@@ -117,13 +121,20 @@ def _load_pr_document(md_path: Path, min_content_length: int) -> Optional[Docume
 
 
 class PhabricatorPrPreprocessor:
-    """Load Phabricator markdown files from data/phabricator and produce Documents."""
+    """
+    Load Phabricator PR-style markdown files and produce LangChain Documents.
+
+    Expects markdown with header lines for D-number, title, state, username,
+    created-at, and URL. Call load_documents() to scan the data directory and
+    return a list of Document instances with extracted metadata.
+    """
 
     def __init__(
         self,
         data_dir: str = "data/github/Clang/phabricator",
         min_content_length: int = 10,
     ):
+        """Initialize with the directory containing Phabricator markdown files and minimum content length."""
         self.data_dir = Path(data_dir)
         self.min_content_length = min_content_length
 
